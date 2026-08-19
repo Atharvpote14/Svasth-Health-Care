@@ -7,7 +7,7 @@ This document defines the backend architecture for the platform.
 Stack (from `PROJECT_CONTEXT.md`):
 
 ```text
-Runtime:       Node.js (LTS, TypeScript)
+Runtime:       Node.js (LTS, JavaScript — modern ESM)
 Framework:     Express.js
 Database:      PostgreSQL via Supabase
 Validation:    zod
@@ -48,27 +48,27 @@ PostgreSQL (Supabase)   +   Object Storage (images)   +   Redis (queues/cache)
 server/
 │
 ├── src/
-│   ├── index.ts                  # entry point
-│   ├── app.ts                    # express app assembly
+│   ├── index.js                  # entry point
+│   ├── app.js                    # express app assembly
 │   ├── config/
-│   │   ├── env.ts                # env validation at boot
-│   │   └── constants.ts
+│   │   ├── env.js                # env validation at boot
+│   │   └── constants.js
 │   │
 │   ├── routes/
 │   │   ├── v1/
-│   │   │   ├── services.routes.ts
-│   │   │   ├── categories.routes.ts
-│   │   │   ├── conditions.routes.ts
-│   │   │   ├── locations.routes.ts
-│   │   │   ├── professionals.routes.ts
-│   │   │   ├── equipment.routes.ts
-│   │   │   ├── search.routes.ts
-│   │   │   ├── availability.routes.ts
-│   │   │   ├── bookings.routes.ts
-│   │   │   ├── leads.routes.ts        # enquiries, callbacks, contact, partners
-│   │   │   ├── content.routes.ts      # articles, faqs, testimonials
-│   │   │   ├── auth.routes.ts
-│   │   │   └── me.routes.ts
+│   │   │   ├── services.routes.js
+│   │   │   ├── categories.routes.js
+│   │   │   ├── conditions.routes.js
+│   │   │   ├── locations.routes.js
+│   │   │   ├── professionals.routes.js
+│   │   │   ├── equipment.routes.js
+│   │   │   ├── search.routes.js
+│   │   │   ├── availability.routes.js
+│   │   │   ├── bookings.routes.js
+│   │   │   ├── leads.routes.js        # enquiries, callbacks, contact, partners
+│   │   │   ├── content.routes.js      # articles, faqs, testimonials
+│   │   │   ├── auth.routes.js
+│   │   │   └── me.routes.js
 │   │   └── admin/
 │   │       └── ...
 │   │
@@ -76,52 +76,52 @@ server/
 │   │   └── ...
 │   │
 │   ├── services/                 # business logic layer
-│   │   ├── booking.service.ts
-│   │   ├── lead.service.ts
-│   │   ├── availability.service.ts
-│   │   ├── search.service.ts
-│   │   ├── auth.service.ts
+│   │   ├── booking.service.js
+│   │   ├── lead.service.js
+│   │   ├── availability.service.js
+│   │   ├── search.service.js
+│   │   ├── auth.service.js
 │   │   └── ...
 │   │
 │   ├── repositories/             # data access layer
-│   │   ├── booking.repo.ts
-│   │   ├── service.repo.ts
+│   │   ├── booking.repo.js
+│   │   ├── service.repo.js
 │   │   └── ...
 │   │
 │   ├── middleware/
-│   │   ├── authenticate.ts
-│   │   ├── authorize.ts          # role checks
-│   │   ├── validate.ts           # zod schema runner
-│   │   ├── rateLimit.ts
-│   │   ├── errorHandler.ts
-│   │   ├── notFound.ts
-│   │   ├── requestLogger.ts
-│   │   └── securityHeaders.ts
+│   │   ├── authenticate.js
+│   │   ├── authorize.js          # role checks
+│   │   ├── validate.js           # zod schema runner
+│   │   ├── rateLimit.js
+│   │   ├── errorHandler.js
+│   │   ├── notFound.js
+│   │   ├── requestLogger.js
+│   │   └── securityHeaders.js
 │   │
 │   ├── validators/
-│   │   ├── booking.schema.ts
-│   │   ├── lead.schema.ts
+│   │   ├── booking.schema.js
+│   │   ├── lead.schema.js
 │   │   └── ...
 │   │
-│   ├── types/
-│   │   ├── api.ts
-│   │   └── domain.ts
+│   ├── types/                    # shared JS object shapes (JSDoc-documented)
+│   │   ├── api.js
+│   │   └── domain.js
 │   │
 │   ├── integrations/
-│   │   ├── supabase.ts
-│   │   ├── sms.ts
-│   │   ├── email.ts
-│   │   ├── storage.ts
-│   │   └── payments.ts
+│   │   ├── supabase.js
+│   │   ├── sms.js
+│   │   ├── email.js
+│   │   ├── storage.js
+│   │   └── payments.js
 │   │
 │   ├── workers/
-│   │   ├── notification.worker.ts
-│   │   └── booking.reminder.ts
+│   │   ├── notification.worker.js
+│   │   └── booking.reminder.js
 │   │
 │   └── utils/
-│       ├── reference.ts          # CN-2026-000123 generation
-│       ├── pagination.ts
-│       └── logger.ts
+│       ├── reference.js          # CN-2026-000123 generation
+│       ├── pagination.js
+│       └── logger.js
 │
 ├── tests/
 │   ├── unit/
@@ -156,7 +156,7 @@ routes → controllers → services → repositories → database
 * All business rules live here
 * Transactional orchestration (bookings, leads)
 * Call repositories and integrations
-* Throw typed domain errors (NotFoundError, ValidationError, ConflictError)
+* Throw structured domain errors (NotFoundError, ValidationError, ConflictError)
 
 ### 4.3 Repositories
 
@@ -177,7 +177,7 @@ routes → controllers → services → repositories → database
 
 ### 5.1 Domain errors
 
-```typescript
+```javascript
 class AppError extends Error {
   constructor(
     public statusCode: number,
@@ -368,7 +368,7 @@ See `TESTING_AND_QA.md`:
 
 See `DEPLOYMENT_AND_ENVIRONMENTS.md` for the full variable list.
 
-At boot, `config/env.ts` validates all required variables and fails fast with a clear message.
+At boot, `config/env.js` validates all required variables and fails fast with a clear message.
 
 ---
 

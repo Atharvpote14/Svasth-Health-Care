@@ -664,8 +664,16 @@ The interface should be usable by older adults and users with accessibility need
 Preferred frontend:
 
 Next.js
-TypeScript
+JavaScript (modern ESM, not TypeScript)
 Tailwind CSS
+
+Note: TypeScript was evaluated but JavaScript was chosen for faster,
+simpler development. To compensate for the lack of static typing:
+
+- All API data contracts are defined in `API_SPECIFICATION.md`.
+- All input validation is centralized with zod schemas in the backend.
+- State and entity shapes follow `DATA_MODEL.md` strictly.
+- eslint and thorough tests enforce quality (see `TESTING_AND_QA.md`).
 
 Preferred UI/interaction tools:
 
@@ -708,7 +716,8 @@ AI-generated code must be:
 - Production-oriented
 - Modular
 - Reusable
-- Typed
+- Consistent (JavaScript with strict eslint rules; data shapes follow the
+  contracts in `API_SPECIFICATION.md` and `DATA_MODEL.md`)
 - Maintainable
 - Accessible
 - Secure

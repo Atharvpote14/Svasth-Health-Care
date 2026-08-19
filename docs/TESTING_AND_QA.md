@@ -30,7 +30,7 @@ Frontend:            React Testing Library
 E2E:                 Playwright
 Accessibility:       axe-core (via Testing Library and Playwright)
 Coverage:            v8 provider, gate ≥ 80% on services/validators
-Linting:             ESLint + TypeScript strict
+Linting:             ESLint (strict ruleset)
 ```
 
 ---
@@ -197,7 +197,7 @@ Penetration test by a qualified professional before production launch
 ## 12. Quality Gates (CI)
 
 ```text
-Gate 1  eslint + tsc (strict)            → must pass
+Gate 1  eslint (strict)                  → must pass
 Gate 2  unit tests                       → must pass, coverage ≥ 80% (services)
 Gate 3  integration tests                → must pass
 Gate 4  component tests                  → must pass

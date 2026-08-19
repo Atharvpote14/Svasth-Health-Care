@@ -27,7 +27,7 @@ Domain example: carenest.in   (to be registered/verified by the organization)
 
 The name is a working placeholder. If the organization prefers another name,
 all tokens, copy, and assets must be updated consistently through a brand
-configuration file (`src/config/brand.ts` or equivalent).
+configuration file (`src/config/brand.js` or equivalent).
 
 ---
 

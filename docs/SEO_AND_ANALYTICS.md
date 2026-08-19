@@ -169,7 +169,7 @@ On equipment pages with `offers` for buy/rent price.
 ### 5.1 sitemap.xml
 
 ```text
-/sitemap.xml  (or Next.js app/sitemap.ts)
+/sitemap.xml  (or Next.js app/sitemap.js)
 Contains: home, services, service categories, service details,
           conditions, locations, location+service, articles, faqs,
           about, contact, legal

@@ -25,7 +25,7 @@ Components must be:
 * Responsive
 * Data-driven
 * Composable
-* Type-safe
+* Contract-consistent (follows the data shapes defined in `API_SPECIFICATION.md`)
 * Maintainable
 * Consistent with `DESIGN_SYSTEM.md`
 
@@ -38,7 +38,7 @@ Do not build pages as large monolithic components.
 Bad:
 
 ```text
-HomePage.tsx
+HomePage.jsx
 ├── 1000 lines
 ├── Hero
 ├── Services
@@ -782,7 +782,7 @@ SearchEmptyState
 SearchError
 ```
 
-Search results must be typed.
+Search results must follow consistent shapes defined in `API_SPECIFICATION.md`.
 
 Example categories:
 
@@ -1128,8 +1128,8 @@ Component APIs should be:
 
 * Explicit
 * Small
-* Type-safe
 * Predictable
+* Documented (JSDoc where helpful)
 
 Avoid huge prop interfaces containing dozens of unrelated options.
 
@@ -1405,9 +1405,9 @@ Prefer:
 
 ```text id="4v8m2q"
 ServiceCard/
-├── ServiceCard.tsx
-├── ServiceCard.test.tsx
-└── index.ts
+├── ServiceCard.jsx
+├── ServiceCard.test.jsx
+└── index.js
 ```
 
 for sufficiently complex components.

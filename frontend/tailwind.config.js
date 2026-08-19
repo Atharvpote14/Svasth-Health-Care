@@ -77,6 +77,15 @@ const config = {
         lg: "0 10px 20px rgba(18,18,16,0.08), 0 4px 8px rgba(18,18,16,0.04)",
         xl: "0 20px 40px rgba(18,18,16,0.10), 0 8px 16px rgba(18,18,16,0.06)",
       },
+      spacing: {
+        13: "52px",
+      },
+      transitionDuration: {
+        250: "250ms",
+      },
+      transitionTimingFunction: {
+        standard: "cubic-bezier(0.4, 0, 0.2, 1)",
+      },
       keyframes: {
         "fade-in": {
           from: { opacity: "0" },

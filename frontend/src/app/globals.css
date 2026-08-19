@@ -26,6 +26,242 @@
   }
 }
 
+@layer components {
+  /* ---------- Buttons ---------- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 text-base font-medium transition-colors duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply bg-white border border-neutral-300 text-neutral-800 hover:border-primary-600 hover:text-primary-700;
+  }
+
+  .btn-tertiary {
+    @apply bg-transparent text-primary-700 hover:underline;
+  }
+
+  .btn-accent {
+    @apply bg-accent-500 text-white hover:bg-accent-600;
+  }
+
+  .btn-destructive {
+    @apply bg-error-500 text-white hover:bg-error-500/90;
+  }
+
+  .btn-link {
+    @apply bg-transparent text-primary-700 underline decoration-primary-300 underline-offset-4 hover:decoration-primary-700;
+  }
+
+  /* ---------- Card ---------- */
+  .card {
+    @apply bg-white rounded-md border border-neutral-200 shadow-xs p-6;
+  }
+
+  /* ---------- Header / Navbar ---------- */
+  .header {
+    @apply sticky top-0 z-40 bg-white border-b border-neutral-200;
+  }
+
+  .header-container {
+    @apply mx-auto flex h-16 max-w-6xl items-center justify-between px-6;
+  }
+
+  .header-logo {
+    @apply flex items-center;
+  }
+
+  .header-navigation {
+    @apply flex items-center gap-6;
+  }
+
+  .navbar-list {
+    @apply flex items-center gap-6 list-none;
+  }
+
+  .navbar-item a {
+    @apply text-sm font-medium text-neutral-800 hover:text-primary-700 transition-colors;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    @apply bg-neutral-900 text-neutral-200;
+  }
+
+  .footer-container {
+    @apply mx-auto grid max-w-6xl grid-cols-1 gap-8 px-6 py-12 sm:grid-cols-2 lg:grid-cols-4;
+  }
+
+  .footer-column h3 {
+    @apply mb-4 font-display text-base text-white;
+  }
+
+  .footer-column ul {
+    @apply list-none space-y-2;
+  }
+
+  .footer-column a {
+    @apply text-sm text-neutral-400 hover:text-white transition-colors;
+  }
+
+  .footer-bottom {
+    @apply border-t border-neutral-800 py-6 text-center text-sm text-neutral-500;
+  }
+
+  /* ---------- Form controls ---------- */
+  .input,
+  .select,
+  .textarea {
+    @apply h-11 w-full rounded-md border border-neutral-300 bg-white px-3 text-base text-neutral-800 placeholder:text-neutral-400 focus:border-primary-600 focus:ring-2 focus:ring-primary-600/20 disabled:bg-neutral-100 disabled:opacity-60;
+  }
+
+  .textarea {
+    @apply h-auto min-h-28 py-2;
+  }
+
+  /* ---------- Badge ---------- */
+  .badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-sm font-medium;
+  }
+
+  .badge-default {
+    @apply bg-neutral-100 text-neutral-700;
+  }
+
+  .badge-primary {
+    @apply bg-primary-100 text-primary-800;
+  }
+
+  .badge-accent {
+    @apply bg-accent-100 text-accent-800;
+  }
+
+  .badge-success {
+    @apply bg-success-100 text-success-500;
+  }
+
+  .badge-warning {
+    @apply bg-warning-100 text-warning-500;
+  }
+
+  .badge-error {
+    @apply bg-error-100 text-error-500;
+  }
+
+  /* ---------- Breadcrumb ---------- */
+  .breadcrumb ol {
+    @apply flex flex-wrap items-center gap-2 text-sm text-neutral-600 list-none;
+  }
+
+  .breadcrumb a {
+    @apply text-primary-700 hover:underline;
+  }
+
+  .breadcrumb-separator {
+    @apply text-neutral-400;
+  }
+
+  /* ---------- Section title ---------- */
+  .section-title {
+    @apply mb-10;
+  }
+
+  .section-title-center {
+    @apply text-center;
+  }
+
+  .section-title-center h2 {
+    @apply mx-auto;
+  }
+
+  .section-title h2 {
+    @apply font-display text-3xl text-neutral-900 md:text-4xl;
+  }
+
+  .section-subtitle {
+    @apply mb-2 text-sm font-semibold uppercase tracking-widest text-primary-700;
+  }
+
+  /* ---------- Accordion ---------- */
+  .accordion {
+    @apply divide-y divide-neutral-200 rounded-md border border-neutral-200 bg-white;
+  }
+
+  .accordion-header {
+    @apply flex w-full items-center justify-between px-6 py-4 text-left text-base font-medium text-neutral-800 hover:text-primary-700 transition-colors;
+  }
+
+  .accordion-content {
+    @apply px-6 pb-4 text-neutral-700;
+  }
+
+  /* ---------- Modal ---------- */
+  .modal-overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-neutral-950/50 p-4;
+  }
+
+  .modal {
+    @apply w-full max-w-lg rounded-xl bg-white shadow-xl;
+  }
+
+  .modal-header {
+    @apply flex items-center justify-between border-b border-neutral-200 px-6 py-4;
+  }
+
+  .modal-header h2 {
+    @apply text-xl;
+  }
+
+  .modal-close {
+    @apply text-2xl leading-none text-neutral-500 hover:text-neutral-800;
+  }
+
+  .modal-body {
+    @apply px-6 py-4;
+  }
+
+  /* ---------- Tabs ---------- */
+  .tabs-header {
+    @apply flex gap-1 border-b border-neutral-200;
+  }
+
+  .tab-button {
+    @apply rounded-t-md px-4 py-2 text-sm font-medium text-neutral-600 hover:text-primary-700 transition-colors;
+  }
+
+  .tab-button.active {
+    @apply border-b-2 border-primary-600 text-primary-700;
+  }
+
+  .tabs-content {
+    @apply py-6;
+  }
+
+  /* ---------- Checkbox / Radio ---------- */
+  .checkbox,
+  .radio {
+    @apply inline-flex cursor-pointer items-center gap-2 text-base text-neutral-800;
+  }
+
+  .checkbox input,
+  .radio input {
+    @apply h-5 w-5 accent-primary-600;
+  }
+
+  /* ---------- Pagination ---------- */
+  .pagination {
+    @apply flex items-center gap-2;
+  }
+
+  /* ---------- Search bar ---------- */
+  .search-bar {
+    @apply flex items-center gap-2;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

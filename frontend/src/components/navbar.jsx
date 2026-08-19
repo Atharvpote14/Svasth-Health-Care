@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Navbar = ({ items = [], className = "" }) => {
   return (
@@ -6,7 +6,7 @@ const Navbar = ({ items = [], className = "" }) => {
       <ul className="navbar-list">
         {items.map((item) => (
           <li className="navbar-item" key={item.path || item.label}>
-            <Link to={item.path}>{item.label}</Link>
+            <Link href={item.path}>{item.label}</Link>
           </li>
         ))}
       </ul>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Footer = ({ columns = [], copyright = "", className = "" }) => {
   return (
@@ -11,7 +11,7 @@ const Footer = ({ columns = [], copyright = "", className = "" }) => {
             <ul>
               {column.links?.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.path}>{link.label}</Link>
+                  <Link href={link.path}>{link.label}</Link>
                 </li>
               ))}
             </ul>

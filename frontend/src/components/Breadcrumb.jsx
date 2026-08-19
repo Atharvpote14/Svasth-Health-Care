@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Breadcrumb = ({ items = [], className = "" }) => {
   return (
@@ -10,7 +10,7 @@ const Breadcrumb = ({ items = [], className = "" }) => {
           return (
             <li key={item.label || index}>
               {!isLast && item.path ? (
-                <Link to={item.path}>{item.label}</Link>
+                <Link href={item.path}>{item.label}</Link>
               ) : (
                 <span>{item.label}</span>
               )}

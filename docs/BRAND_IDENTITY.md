@@ -79,10 +79,10 @@ Symbol: a simple, calm house silhouette merged with a heart or a leaf,
         drawn with a single continuous stroke — representing care inside home.
 
 Style:   minimal line icon, rounded line ends, no gradients
-Color:   primary-600 (teal-green) on white
+Color:   secondary (#0B5AA6) on white
 Negative: white symbol on primary-900
 
-Wordmark: "Lora" medium, neutral-900
+Wordmark: "Poppins" semibold, neutral-900
 ```
 
 ### Logo rules
@@ -98,43 +98,44 @@ Wordmark: "Lora" medium, neutral-900
 
 The full token values are in `DESIGN_SYSTEM.md`. This section defines the meaning.
 
-### 7.1 Primary — Teal Green (calm clinical trust)
+### 7.1 Action — Portea Orange (action / booking)
 
 ```text
-primary-600  #1F7C63
+accent  #f25922   (hover #e8470e)
 ```
 
 Communicates:
 
-* Health and healing
-* Calm and control
-* Clinical credibility
-* Modern healthcare (teal is a contemporary healthcare color,
-  clearly distinct from legacy red hospital branding)
+* The single action on a section (Book Now, Enquire Now)
+* Reserved — one per section, never decorative
 
-### 7.2 Accent — Warm Amber (human warmth)
+### 7.2 Primary — Portea Teal (trust / links / outlines)
 
 ```text
-accent-500  #E58F1F
+primary  #00979e   (hover #00767c)
 ```
 
 Communicates:
 
-* Warmth and humanity
-* Used sparingly for highlights and moments that need gentle attention
-* Never used for large surfaces
+* Trust and clinical reliability
+* Links, outline buttons, icon fills, eyebrows, section highlights
+* The workhorse of the interface
 
-### 7.3 Neutral — Warm Grays
+### 7.3 Dark — #0d2222 (depth)
 
-Warm grays keep the interface human instead of sterile.
+```text
+dark  #0d2222   (gradient end #114143; footer #252835)
+```
+
+Used for headings, the How-It-Works band, and the closing CTA band.
 
 ### 7.4 Usage proportions
 
 ```text
-White / neutral-50        ~70%   (backgrounds, breathing room)
-Neutral grays             ~20%   (text, borders, secondary surfaces)
-Primary teal              ~8%    (brand moments, primary actions)
-Accent amber              ~2%    (sparkle moments only)
+White + Ivory (#faf7f1) + page (#fafafa)   ~70%   (backgrounds, breathing room)
+Neutrals (#0d2222/#616f6f)                 ~20%   (text, borders, secondary surfaces)
+Portea Teal #00979e                        ~7%    (links, icons, secondary actions)
+Portea Orange #f25922                      ~2%    (primary actions only)
 ```
 
 ---
@@ -142,12 +143,12 @@ Accent amber              ~2%    (sparkle moments only)
 ## 8. Typography
 
 ```text
-Display:  Lora (serif)
-Body:     Inter (sans)
+Display:  Poppins (600 — the font loaded by apollohomecare.com)
+Body:     system-ui sans stack (live-site default)
 ```
 
-Rationale: serif display headings evoke a premium, established healthcare
-institution; Inter keeps everything readable and calm.
+Rationale: Poppins is the live Apollo Homecare display font; the live site
+applies no custom body font, so body text inherits the system sans stack.
 
 Full type scale and rules: `DESIGN_SYSTEM.md` section 4.
 
@@ -281,7 +282,7 @@ Fields:     Name, Phone, City, Reason
 [ ] Logo (SVG) + favicon (SVG/ICO) in repo
 [ ] Social OG image (1200x630) designed with approved palette
 [ ] Brand color tokens in tailwind config
-[ ] Fonts loaded (Lora + Inter) with fallbacks
+[ ] Fonts loaded (Poppins) with fallbacks
 [ ] Legal entity name confirmed for legal pages
 [ ] Approved tagline and hero copy
 [ ] Approved imagery set (licensed or original photography)

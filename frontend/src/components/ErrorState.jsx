@@ -6,7 +6,7 @@ const ErrorState = ({
 }) => {
   return (
     <div
-      className={`flex flex-col items-center gap-4 rounded-md border border-error-100 bg-error-100/40 px-6 py-12 text-center ${className}`}
+      className={`flex flex-col items-center gap-4 rounded-md border border-primary/20 bg-primary/5 px-6 py-12 text-center ${className}`}
       role="alert"
     >
       <h3 className="text-lg font-semibold text-neutral-900">{title}</h3>

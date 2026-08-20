@@ -4,44 +4,48 @@ const config = {
   theme: {
     extend: {
       colors: {
+        /* Portea design system — extracted EXACT values from portea.com
+           (theme-color #3fc1be; tokens --primary:#00979e, --db:#0d2222,
+           --mb:#616f6f, --bc:#f25922, --ivory:#faf7f1) */
         primary: {
-          50: "#F0F7F5",
-          100: "#DCEFE9",
-          200: "#B8DFD4",
-          300: "#8CCAB8",
-          400: "#55B096",
-          500: "#2E9678",
-          600: "#1F7C63",
-          700: "#1A6A54",
-          800: "#155549",
-          900: "#0F433A",
-          950: "#0A2E28",
+          /* Portea teal --primary:#00979e */
+          DEFAULT: "#00979e",
+          50: "#00979e",
+          100: "#00979e",
+          500: "#00979e",
+          600: "#00767c",
+          700: "#007a80",
+        },
+        secondary: {
+          /* Same teal family (links / outline buttons / icon accents) */
+          DEFAULT: "#00979e",
+          50: "#00979e",
+          100: "#00979e",
+          500: "#00979e",
+          600: "#00767c",
+          700: "#007a80",
         },
         accent: {
-          50: "#FEF7EC",
-          100: "#FCECCC",
-          200: "#F9D99A",
-          300: "#F5C060",
-          400: "#F0A63B",
-          500: "#E58F1F",
-          600: "#C47318",
-          700: "#9C5A15",
-          800: "#7E4814",
-          900: "#683C14",
+          /* Portea CTA orange --bc:#f25922 (hover #e8470e) */
+          DEFAULT: "#f25922",
+          100: "#f25922",
+          500: "#f25922",
+          600: "#e8470e",
         },
         neutral: {
-          0: "#FFFFFF",
-          50: "#FAFAF8",
-          100: "#F4F4F1",
-          200: "#E7E7E2",
-          300: "#D3D3CC",
-          400: "#A8A89F",
-          500: "#7F7F76",
-          600: "#5C5C55",
-          700: "#42423D",
-          800: "#2E2E2A",
-          900: "#1C1C19",
-          950: "#121210",
+          /* Base white #ffffff, ivory #faf7f1, body text #616f6f,
+             headings/dark #0d2222 */
+          50: "#FFFFFF",
+          100: "#faf7f1",
+          200: "#faf7f1",
+          300: "#616f6f",
+          400: "#616f6f",
+          500: "#616f6f",
+          600: "#616f6f",
+          700: "#616f6f",
+          800: "#0d2222",
+          900: "#0d2222",
+          950: "#0d2222",
         },
         success: {
           500: "#2F855A",
@@ -61,8 +65,22 @@ const config = {
         },
       },
       fontFamily: {
-        display: ["Lora", "Georgia", "serif"],
-        sans: ["Inter", "system-ui", "sans-serif"],
+        /* Portea --font-display: "Fraunces","Fraunces-fallback",Georgia,serif
+           (600 loaded). Body: Poppins declared but NOT loaded on portea.com —
+           falls back to system sans, which is what we mirror. */
+        display: ["Fraunces", "Georgia", "serif"],
+        sans: [
+          "ui-sans-serif",
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "Roboto",
+          "sans-serif",
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol",
+          "Noto Color Emoji",
+        ],
       },
       borderRadius: {
         sm: "4px",

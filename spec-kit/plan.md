@@ -99,7 +99,7 @@ City variants coordinated with Person C — links only, no duplicate pages
 ## 3. Design direction (from docs/DESIGN_SYSTEM.md + BRAND_IDENTITY.md)
 
 ```text
-LTC hub            → primary-led hero (deep teal), calm, senior-friendly
+LTC hub            → secondary-led hero (Trust Blue), calm, senior-friendly
 Home Visit hub    → lighter hero, quick-booking feel
 ICU page          → most subdued; expert-consultation framing
 Procedure pages   → minimal, fast-scan, one CTA

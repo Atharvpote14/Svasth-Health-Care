@@ -25,7 +25,12 @@ const FAQAccordion = ({ items = [], allowMultiple = false, className = "" }) => 
         const panelId = `faq-panel-${item.id}`;
 
         return (
-          <div className="accordion-item" key={item.id}>
+          <div
+            className={`accordion-item border-b border-[rgba(0,151,158,0.12)] last:border-b-0 ${
+              isOpen ? "bg-neutral-100 shadow-[inset_3px_0_0_0_rgba(0,151,158,1)]" : ""
+            }`}
+            key={item.id}
+          >
             <h3>
               <button
                 type="button"
@@ -38,7 +43,7 @@ const FAQAccordion = ({ items = [], allowMultiple = false, className = "" }) => 
                 <ChevronDown
                   size={20}
                   aria-hidden="true"
-                  className={`shrink-0 text-neutral-400 transition-transform duration-150 ${
+                  className={`shrink-0 text-primary transition-transform duration-200 ${
                     isOpen ? "rotate-180" : ""
                   }`}
                 />

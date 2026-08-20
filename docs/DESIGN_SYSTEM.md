@@ -28,66 +28,67 @@ No hard-coded hex values, font sizes, or spacing values are allowed inside compo
 
 ## 3.1 Brand Palette
 
+Extracted from the live portea.com production CSS bundle (`styles.35d2416ac6e03971070d.css`,
+`:root` custom properties: `--primary:#00979e`, `--db:#0d2222`, `--mb:#616f6f`,
+`--bc:#f25922`, `--ivory:#faf7f1`; theme-color `#3fc1be`).
+
 ```text
-Primary
-├── primary-50   #F0F7F5
-├── primary-100  #DCEFE9
-├── primary-200  #B8DFD4
-├── primary-300  #8CCAB8
-├── primary-400  #55B096
-├── primary-500  #2E9678   (brand primary)
-├── primary-600  #1F7C63
-├── primary-700  #1A6A54
-├── primary-800  #155549
-├── primary-900  #0F433A
-└── primary-950  #0A2E28
+Primary/Secondary — Portea Teal #00979e  (links, outline buttons, icon accents, eyebrows)
+  hover/links-hover  #00767c   (primary-600)
+  gradient ends      #007a80 / #007075
+CTA/Action — Portea Orange #f25922  (Book Now / primary buttons)
+  hover              #e8470e   (accent-600)
+Dark — #0d2222  (headings, dark section base; gradient end #114143)
+Body/Muted — #616f6f  (paragraphs, secondary text)
+Ivory — #faf7f1  (alternate section backgrounds — header/hero, services, doctors, press, footprint)
+Base — #FFFFFF  (cards, FAQ section)
+Page bg — #fafafa  (body; offers/testimonials/partners sit on it)
+Footer — #252835
 ```
 
-The primary color is a deep, calm teal-green. It communicates health, growth, calm,
-and clinical trust without feeling corporate or cold.
+Rules of thumb:
+
+* Orange = action only (Book Now). One per section.
+* Teal = links, outlines, icon fills, eyebrows — the workhorse.
+* Dark bands (#0d2222→#114143 with the 1.5px teal-dot radial pattern) only for
+  How-It-Works and the final CTA.
+* Section rhythm alternates ivory `#faf7f1` / white `#ffffff` / page `#fafafa`.
+* Hover states use teal fills and existing alpha variants — no new colors.
 
 ---
 
 ## 3.2 Accent Palette
 
 ```text
-Accent (warm amber — human warmth, CTAs needing attention)
-├── accent-50   #FEF7EC
-├── accent-100  #FCECCC
-├── accent-200  #F9D99A
-├── accent-300  #F5C060
-├── accent-400  #F0A63B
-├── accent-500  #E58F1F   (accent primary)
-├── accent-600  #C47318
-├── accent-700  #9C5A15
-├── accent-800  #7E4814
-└── accent-900  #683C14
+Accent (Portea Orange #f25922 — primary action only)
+├── accent-500  #f25922   (Book Now / main buttons)
+└── accent-600  #e8470e   (button hover)
 ```
 
-The accent is used sparingly for emphasis: small highlights, active states, or
-attention-grabbing elements. It must never dominate the interface.
+The accent is reserved for actions — never decorative blocks.
 
 ---
 
 ## 3.3 Neutral Palette
 
 ```text
-Neutral (warm grays — human, calm, readable)
-├── neutral-0    #FFFFFF   (white)
-├── neutral-50   #FAFAF8
-├── neutral-100  #F4F4F1
-├── neutral-200  #E7E7E2
-├── neutral-300  #D3D3CC
-├── neutral-400  #A8A89F
-├── neutral-500  #7F7F76
-├── neutral-600  #5C5C55
-├── neutral-700  #42423D
-├── neutral-800  #2E2E2A
-├── neutral-900  #1C1C19
-└── neutral-950  #121210
+Neutral (Portea tokens)
+├── neutral-50   #FFFFFF   (Base — cards, white sections)
+├── neutral-100  #faf7f1   (Ivory — alternate section backgrounds)
+├── neutral-200  #faf7f1   (light surfaces)
+├── neutral-300  #616f6f   (muted text, subtle borders at low alpha)
+├── neutral-400  #616f6f   (placeholders, secondary text)
+├── neutral-500  #616f6f   (captions)
+├── neutral-600  #616f6f   (body, secondary text)
+├── neutral-700  #616f6f   (secondary emphasis)
+├── neutral-800  #0d2222   (headings, primary text)
+├── neutral-900  #0d2222   (dark bands — How It Works, closing CTA)
+└── neutral-950  #0d2222   (overlays at alpha)
 ```
 
-Neutrals are warm, never pure gray, to keep the product feeling human.
+Body background is `#fafafa`; footer is `#252835` (exact Portea values, set in
+globals.css). Border alphas come from the Portea set: rgba(0,151,158,.12/.14/.16/.35)
+for teal-bordered cards and rgba(13,34,34,.06/.08/.1) for dark-bordered surfaces.
 
 ---
 
@@ -102,32 +103,27 @@ Warning
 ├── warning-500  #C05621
 └── warning-100  #FBEEDD
 
-Error
-├── error-500    #C0392B
-└── error-100    #FBEAE8
-
-Info
-├── info-500     #2B6CB0
-└── info-100     #E3EEF7
+Error → uses Portea Orange (#f25922) family — no separate error color on screen
+Info  → uses Portea Teal (#00979e) tints
 ```
 
 Semantic colors are used for states only:
 
 * Success: confirmed bookings, saved states
 * Warning: items requiring attention
-* Error: validation failures, failures
-* Info: neutral explanatory messages
+* Error: validation failures, failures (orange)
+* Info: neutral explanatory messages (teal tints)
 
-Never use error red for decoration.
+Never use the action orange for decoration.
 
 ---
 
 ## 3.5 Color Rules
 
 1. Text on primary-600 or darker surfaces must be white.
-2. Text on primary-100 or lighter surfaces must be primary-900.
+2. Text on ivory (#faf7f1) surfaces must be neutral-900.
 3. Body text uses neutral-800; secondary text uses neutral-600.
-4. Links use primary-700 with underline on hover.
+4. Links use primary (teal #00979e) with #00767c hover.
 5. Never use color alone to communicate meaning (accessibility).
 6. All text/background pairs must meet WCAG AA contrast (4.5:1 body, 3:1 large text).
 
@@ -138,17 +134,17 @@ Never use error red for decoration.
 ## 4.1 Font Families
 
 ```text
-Display / Headings:  "Lora" (serif, warm, premium, human)
-Body / UI:           "Inter" (neutral, highly readable)
+Display / Headings:  "Fraunces" (600 — as loaded by portea.com; self-hosted woff2)
+Body / UI:           system-ui sans stack (portea.com declares Poppins but never loads it —
+                     body inherits the default system sans)
 Mono (rare):         "JetBrains Mono" or system mono
 ```
 
 Rationale:
 
-* Serif headings give a premium, editorial, healthcare-institution feel.
-* Sans body text maximizes readability for older users.
-
-Fallback stacks must be defined.
+* Fraunces 600 (normal + italic) is the heading font on portea.com (`--font-display`).
+* The live site loads no body font — body inherits the default system sans.
+* Fallback stacks must be defined.
 
 ---
 
@@ -167,17 +163,16 @@ text-5xl    48px / 56px
 text-6xl    60px / 68px
 ```
 
-## 4.3 Heading Styles
+## 4.3 Heading Styles (live-site exact sizes)
 
 ```text
-H1  →  text-4xl → text-6xl (responsive), Lora, neutral-900
-H2  →  text-3xl → text-4xl, Lora, neutral-900
-H3  →  text-2xl, Lora, neutral-900
-H4  →  text-xl, Inter, neutral-900, semibold
-Eyebrow → text-sm, Inter, semibold, uppercase, letter-spacing 0.08em, primary-700
-Body → text-base, Inter, neutral-800
-Lead → text-lg → text-xl, Inter, neutral-600
-Caption → text-sm, Inter, neutral-500
+Hero H1 → text-[40px], font-bold, #009A9F
+H2      → text-[26px] → md:text-[32px], font-bold, #031432
+H3      → text-sm → md:text-[20px], font-semibold, #031432
+Eyebrow → text-sm, semibold, uppercase, letter-spacing 0.08em, primary-700
+Body    → text-base, system sans, neutral-800
+Lead    → text-base, neutral-600 (#6C87AE)
+Caption → text-sm, neutral-500
 ```
 
 ## 4.4 Typography Rules
@@ -623,7 +618,7 @@ Fallback: initials on primary-100 with primary-800 text
 ## 13.18 Stat / Trust Item
 
 ```text
-Icon or image + value (Lora, text-3xl/4xl) + label (text-sm neutral-600)
+Icon or image + value (Poppins, text-[23px] → md:text-[32px], 600, white) + label (text-[12px] → md:text-[18px], white/75)
 Used for: patients served, professionals, ratings, years
 Only verified statistics may be displayed
 ```
@@ -770,8 +765,8 @@ colors.primary.*   ← brand palette
 colors.accent.*    ← accent palette
 colors.neutral.*   ← neutral palette
 colors.success/warning/error/info
-fontFamily.display ← Lora
-fontFamily.sans   ← Inter
+fontFamily.display ← Poppins (600, live-site font)
+fontFamily.sans   ← system-ui stack (live-site default)
 spacing            ← 4px base
 borderRadius       ← radius tokens
 boxShadow          ← shadow tokens

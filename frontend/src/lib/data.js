@@ -132,6 +132,17 @@ export async function getHomePage() {
         getSiteService("attendant-at-home"),
         getSiteService("elder-care"),
       ].filter(Boolean),
+      homeVisitServices: [
+        getSiteService("doctor-at-home"),
+        getSiteService("physiotherapy-at-home"),
+        getSiteService("post-surgical-care"),
+      ].filter(Boolean),
+      homeVisitProcedures: [
+        getSiteService("ryles-tube-insertion"),
+        getSiteService("foley-catheter-care"),
+        getSiteService("iv-infusion-at-home"),
+        getSiteService("wound-dressing-at-home"),
+      ].filter(Boolean),
       locations,
     };
   }

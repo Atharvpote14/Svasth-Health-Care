@@ -8,7 +8,8 @@
   }
 
   body {
-    @apply bg-neutral-50 text-neutral-800 font-sans antialiased;
+    /* Portea body background #fafafa */
+    @apply bg-[#fafafa] text-neutral-800 font-sans antialiased;
   }
 
   h1,
@@ -18,52 +19,59 @@
   }
 
   :focus-visible {
-    @apply outline-none ring-2 ring-primary-600 ring-offset-2 ring-offset-white;
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-white;
   }
 
   ::selection {
-    @apply bg-primary-100 text-primary-900;
+    /* Portea selection rgba(0,151,158,.22) */
+    @apply bg-primary/20 text-neutral-900;
   }
 }
 
 @layer components {
   /* ---------- Buttons ---------- */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 text-base font-medium transition-colors duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+    /* Portea buttons: weight 600, radius 999px */
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 text-base font-semibold transition-colors duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .btn-primary {
-    @apply bg-primary-600 text-white hover:bg-primary-700 shadow-sm;
+    /* Portea main-btn/Book Now: #f25922, hover brightness(1.05) */
+    @apply bg-accent text-white hover:bg-accent-600;
   }
 
   .btn-secondary {
-    @apply bg-white border border-neutral-300 text-neutral-800 hover:border-primary-600 hover:text-primary-700;
+    /* Portea outline button: 1px solid rgba(0,151,158,.35), fill on hover */
+    @apply bg-transparent border border-[rgba(0,151,158,0.35)] text-primary hover:bg-primary hover:text-white;
   }
 
   .btn-tertiary {
-    @apply bg-transparent text-primary-700 hover:underline;
+    @apply bg-transparent text-primary hover:text-primary-600 hover:underline;
   }
 
   .btn-accent {
-    @apply bg-accent-500 text-white hover:bg-accent-600;
+    @apply bg-accent-500/10 text-accent-500 hover:bg-accent-500/20;
   }
 
   .btn-destructive {
-    @apply bg-error-500 text-white hover:bg-error-500/90;
+    @apply bg-accent text-white hover:bg-accent-600;
   }
 
   .btn-link {
-    @apply bg-transparent text-primary-700 underline decoration-primary-300 underline-offset-4 hover:decoration-primary-700;
+    @apply bg-transparent text-primary underline decoration-primary/30 underline-offset-4 hover:decoration-primary;
   }
 
   /* ---------- Card ---------- */
   .card {
-    @apply bg-white rounded-md border border-neutral-200 shadow-xs p-6;
+    /* Portea service-tile: radius 12px, border rgba(0,151,158,.12),
+       padding 14px 16px, no default shadow */
+    @apply bg-white rounded-[12px] border border-[rgba(0,151,158,0.12)] px-4 py-3.5;
   }
 
   /* ---------- Header / Navbar ---------- */
   .header {
-    @apply sticky top-0 z-40 bg-white border-b border-neutral-200;
+    /* Portea nav-section: ivory #faf7f1, sticky, subtle dark border */
+    @apply sticky top-0 z-40 bg-neutral-100 border-b border-[rgba(13,34,34,0.06)];
   }
 
   .header-container {
@@ -83,12 +91,13 @@
   }
 
   .navbar-item a {
-    @apply text-sm font-medium text-neutral-800 hover:text-primary-700 transition-colors;
+    @apply text-sm font-medium text-neutral-600 hover:text-primary transition-colors;
   }
 
   /* ---------- Footer ---------- */
   .footer {
-    @apply bg-neutral-900 text-neutral-200;
+    /* Portea footer-sec #252835 */
+    @apply bg-[#252835] text-white;
   }
 
   .footer-container {
@@ -104,18 +113,19 @@
   }
 
   .footer-column a {
-    @apply text-sm text-neutral-400 hover:text-white transition-colors;
+    @apply text-sm font-light text-white/80 hover:text-white transition-colors;
   }
 
   .footer-bottom {
-    @apply border-t border-neutral-800 py-6 text-center text-sm text-neutral-500;
+    @apply border-t border-white/10 py-6 text-center text-sm text-white/60;
   }
 
   /* ---------- Form controls ---------- */
   .input,
   .select,
   .textarea {
-    @apply h-11 w-full rounded-md border border-neutral-300 bg-white px-3 text-base text-neutral-800 placeholder:text-neutral-400 focus:border-primary-600 focus:ring-2 focus:ring-primary-600/20 disabled:bg-neutral-100 disabled:opacity-60;
+    /* Portea control borders rgba(13,34,34,.1) */
+    @apply h-11 w-full rounded-[10px] border border-[rgba(13,34,34,0.1)] bg-white px-3 text-base text-neutral-800 placeholder:text-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:bg-neutral-100 disabled:opacity-60;
   }
 
   .textarea {
@@ -132,23 +142,24 @@
   }
 
   .badge-primary {
-    @apply bg-primary-100 text-primary-800;
+    /* Portea offer badge: bg #00979e, white text, pill */
+    @apply bg-primary text-white;
   }
 
   .badge-accent {
-    @apply bg-accent-100 text-accent-800;
+    @apply bg-accent-500/10 text-accent-500;
   }
 
   .badge-success {
-    @apply bg-success-100 text-success-500;
+    @apply bg-accent-500/10 text-accent-500;
   }
 
   .badge-warning {
-    @apply bg-warning-100 text-warning-500;
+    @apply bg-primary/10 text-primary;
   }
 
   .badge-error {
-    @apply bg-error-100 text-error-500;
+    @apply bg-accent/10 text-accent;
   }
 
   /* ---------- Breadcrumb ---------- */
@@ -157,7 +168,7 @@
   }
 
   .breadcrumb a {
-    @apply text-primary-700 hover:underline;
+    @apply text-secondary hover:underline;
   }
 
   .breadcrumb-separator {
@@ -178,24 +189,54 @@
   }
 
   .section-title h2 {
-    @apply font-display text-3xl text-neutral-900 md:text-4xl;
+    /* Portea h2.head: Fraunces 36px/600/1.3 desktop, 24px mobile */
+    @apply font-display text-[24px] font-semibold leading-[1.3] text-neutral-900 md:text-[36px];
   }
 
   .section-subtitle {
-    @apply mb-2 text-sm font-semibold uppercase tracking-widest text-primary-700;
+    /* Portea eyebrow: 12px/600/uppercase/letter-spacing .14em, primary */
+    @apply mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary;
   }
 
   /* ---------- Accordion ---------- */
   .accordion {
-    @apply divide-y divide-neutral-200 rounded-md border border-neutral-200 bg-white;
+    /* Portea faq-list: border rgba(0,151,158,.16), radius 16px */
+    @apply overflow-hidden rounded-2xl border border-[rgba(0,151,158,0.16)] bg-white;
   }
 
   .accordion-header {
-    @apply flex w-full items-center justify-between px-6 py-4 text-left text-base font-medium text-neutral-800 hover:text-primary-700 transition-colors;
+    /* Portea faq summary: 16px/600 #0d2222 */
+    @apply flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-base font-semibold text-neutral-900 hover:text-primary transition-colors;
   }
 
   .accordion-content {
-    @apply px-6 pb-4 text-neutral-700;
+    /* Portea faq answer: 14.5px/1.7 #616f6f */
+    @apply px-6 pb-6 text-[14.5px] leading-[1.7] text-neutral-600;
+  }
+
+  /* ---------- Portea band backgrounds ----------
+     Dotted teal radial pattern (22px tile) layered over a gradient. Defined
+     as real CSS so the image + size + repeat properties apply correctly
+     (inline backgroundImage alone cannot carry the 22px tile size). */
+  .band-dark-dotted {
+    background-image: radial-gradient(rgba(143, 224, 227, 0.1) 1.5px, transparent 1.6px),
+      linear-gradient(120deg, #0d2222, #114143);
+    background-size: 22px 22px, 100% 100%;
+    background-repeat: repeat, no-repeat;
+  }
+
+  .band-dark-dotted-strong {
+    background-image: radial-gradient(rgba(143, 224, 227, 0.12) 1.5px, transparent 1.6px),
+      linear-gradient(120deg, #0d2222, #114143);
+    background-size: 22px 22px, 100% 100%;
+    background-repeat: repeat, no-repeat;
+  }
+
+  .band-ivory-dotted {
+    background-image: radial-gradient(rgba(0, 151, 158, 0.08) 1.5px, transparent 1.6px),
+      linear-gradient(120deg, #fdfbf7 0%, #faf7f1 100%);
+    background-size: 22px 22px, 100% 100%;
+    background-repeat: repeat, no-repeat;
   }
 
   /* ---------- Modal ---------- */
@@ -208,7 +249,7 @@
   }
 
   .modal-header {
-    @apply flex items-center justify-between border-b border-neutral-200 px-6 py-4;
+    @apply flex items-center justify-between border-b border-neutral-300/30 px-6 py-4;
   }
 
   .modal-header h2 {
@@ -225,15 +266,15 @@
 
   /* ---------- Tabs ---------- */
   .tabs-header {
-    @apply flex gap-1 border-b border-neutral-200;
+    @apply flex gap-1 border-b border-neutral-300/30;
   }
 
   .tab-button {
-    @apply rounded-t-md px-4 py-2 text-sm font-medium text-neutral-600 hover:text-primary-700 transition-colors;
+    @apply rounded-t-md px-4 py-2 text-sm font-medium text-neutral-600 hover:text-secondary transition-colors;
   }
 
   .tab-button.active {
-    @apply border-b-2 border-primary-600 text-primary-700;
+    @apply border-b-2 border-primary text-primary;
   }
 
   .tabs-content {
@@ -248,7 +289,7 @@
 
   .checkbox input,
   .radio input {
-    @apply h-5 w-5 accent-primary-600;
+    @apply h-5 w-5 accent-secondary;
   }
 
   /* ---------- Pagination ---------- */
@@ -259,6 +300,23 @@
   /* ---------- Search bar ---------- */
   .search-bar {
     @apply flex items-center gap-2;
+  }
+
+  /* ---------- Scroll reveal (home page polish) ---------- */
+  /* Hiding class is added by JS only (Reveal component), so content is
+     always visible without JavaScript. */
+  .reveal-pending {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 400ms cubic-bezier(0.4, 0, 0.2, 1),
+      transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal-pending.is-visible {
+    opacity: 1;
+    transform: none;
   }
 }
 

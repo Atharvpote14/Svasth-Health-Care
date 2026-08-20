@@ -108,7 +108,7 @@ Gate 6   axe scans → no critical violations
    (colors, spacing, radii, shadows, type scale).
 2. No hex values inside component code — use Tailwind token classes
    (`bg-primary-600`, `shadow-sm`, `rounded-md`).
-3. Fonts: Lora for display, Inter for body — already wired in `layout.jsx`.
+3. Fonts: Poppins (600) for display, system-ui stack for body — already wired in `layout.jsx`.
 
 ### 4.2 Page-level consistency
 

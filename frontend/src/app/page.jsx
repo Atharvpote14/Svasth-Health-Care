@@ -1,17 +1,25 @@
 import {
-  Award,
   BadgeCheck,
   HeartHandshake,
+  Microscope,
+  MonitorCheck,
   ShieldCheck,
-  Users,
-  Star,
+  Syringe,
 } from "lucide-react";
-import CategoryHero from "../components/care-services/sections/CategoryHero";
+import HeroSection from "../components/care-services/sections/HeroSection";
+import StatsStrip from "../components/care-services/sections/StatsStrip";
 import ServiceGridSection from "../components/care-services/sections/ServiceGridSection";
 import HowItWorksSection from "../components/care-services/sections/HowItWorksSection";
+import OffersSection from "../components/care-services/sections/OffersSection";
+import TestimonialsSection from "../components/care-services/sections/TestimonialsSection";
+import ClinicalLeadershipSection from "../components/care-services/sections/ClinicalLeadershipSection";
 import SafetySection from "../components/care-services/sections/SafetySection";
+import LogosStripSection from "../components/care-services/sections/LogosStripSection";
+import CityCoverageSection from "../components/care-services/sections/CityCoverageSection";
+import FAQSection from "../components/care-services/sections/FAQSection";
 import FinalCTASection from "../components/care-services/sections/FinalCTASection";
-import { getHomePage } from "../lib/data";
+import { getFaqPage, getHomePage } from "../lib/data";
+import { NAV_LINKS, serviceHref } from "../lib/site";
 
 export const metadata = {
   title: "Apollo Homecare | #1 Home Care Services in India",
@@ -19,29 +27,32 @@ export const metadata = {
     "Expert healthcare delivered to your doorstep — long term care, home visits, and nursing procedures by trained, verified professionals. Call 1800 108 8586.",
 };
 
+/* How-it-works steps — real Apollo flow (sourced from live service pages).
+   [CONFIRM WITH CLIENT] — confirm exact step naming before launch. */
 const HOW_IT_WORKS_STEPS = [
   {
-    title: "Initial assessment",
+    title: "Book or call us",
     description:
-      "A detailed evaluation of the patient's health and lifestyle guides the right care.",
+      "Choose a service on this page or call 1800 108 8586 to share the patient's needs.",
   },
   {
-    title: "Care plan design",
+    title: "Clinical assessment",
     description:
-      "A customised care plan is built around individual needs and preferences.",
+      "Apollo's team evaluates the patient's condition and recommends the right care plan.",
   },
   {
-    title: "Service delivery",
+    title: "Care begins at home",
     description:
-      "Regular visits by caregivers, nurses, or therapists happen as per the plan.",
+      "A trained, verified nurse, doctor, or attendant starts care on the agreed schedule.",
   },
   {
-    title: "Monitoring & feedback",
+    title: "Ongoing follow-up",
     description:
-      "Periodic reviews adjust the care plan as needs change over time.",
+      "Recovery is monitored and the care plan is adjusted as needs change over time.",
   },
 ];
 
+/* Why-choose-us grid — unified lucide line icons only, Apollo palette */
 const SAFETY_ITEMS = [
   {
     icon: BadgeCheck,
@@ -56,69 +67,188 @@ const SAFETY_ITEMS = [
       "Tailored care plans designed to meet unique health needs and lifestyle.",
   },
   {
-    icon: Award,
+    icon: ShieldCheck,
     title: "Quality accreditations",
     description:
       "Accreditations that ensure your safety and comfort at home.",
   },
   {
-    icon: ShieldCheck,
+    icon: MonitorCheck,
     title: "Compassionate, reliable care",
     description:
       "Empathetic and ethical care you can trust for unwavering support.",
   },
 ];
 
-const TRUST_STATS = [
-  { icon: Users, value: "1Mn+", label: "Patients served a year" },
-  { icon: BadgeCheck, value: "2K+", label: "Trained and verified caregivers" },
-  { icon: Award, value: "QAI", label: "Badge of honor" },
-  { icon: Star, value: "4.9", label: "Rating on Google" },
+/* Hero trust items — one-line, no invented statistics */
+const HERO_TRUST_ITEMS = [
+  { icon: BadgeCheck, label: "Trained & verified caregivers" },
+  { icon: ShieldCheck, label: "Hospital-grade care at home" },
+  { icon: HeartHandshake, label: "Compassionate, reliable support" },
+];
+
+/* Vertical cards for Diagnostics / Vaccination / Equipment (Person B routes).
+   Minimal copy — full content lives on those pages. */
+const VERTICAL_CARDS = {
+  diagnostics: {
+    icon: Microscope,
+    title: "Home Diagnostics",
+    tagline: "Diagnostic tests and sample collection at home.",
+    href: "/home-diagnostics/",
+  },
+  vaccination: {
+    icon: Syringe,
+    title: "Adult Vaccination",
+    tagline: "Vaccination services delivered at home.",
+    href: "/adult-vaccination/",
+  },
+  equipment: {
+    icon: MonitorCheck,
+    title: "Medical Equipment",
+    tagline: "Medical equipment for home-based care.",
+    href: "/medical-equipment/",
+  },
+};
+
+/* FAQs picked to cover the common questions (real Apollo answers) */
+const HOME_FAQ_IDS = [
+  "faq-booking-1",
+  "faq-trust-1",
+  "faq-booking-2",
+  "faq-proc-2",
+  "faq-icu-1",
+  "faq-icu-2",
+  "faq-booking-3",
+  "faq-trust-2",
 ];
 
 export default async function HomePage() {
   const data = await getHomePage();
+  const { faqs } = await getFaqPage();
+
+  /* "What care do you need?" selector groups — built from real services */
+  const selectorGroups = [
+    {
+      label: "Long Term Care",
+      options: data.popularServices.map((service) => ({
+        label: service.name,
+        href: serviceHref(service),
+      })),
+    },
+    {
+      label: "Home Visit",
+      options: data.homeVisitServices.map((service) => ({
+        label: service.name,
+        href: serviceHref(service),
+      })),
+    },
+    {
+      label: "Nursing Procedures",
+      options: data.homeVisitProcedures.map((service) => ({
+        label: service.name,
+        href: serviceHref(service),
+      })),
+    },
+    {
+      label: "More services",
+      options: NAV_LINKS.slice(3).map((link) => ({
+        label: link.label,
+        href: link.path,
+      })),
+    },
+  ];
+
+  const homeFaqs = faqs.filter((faq) => HOME_FAQ_IDS.includes(faq.id));
 
   return (
     <>
-      <CategoryHero
-        tone="primary"
-        eyebrow="Apollo Homecare"
-        title="Expert Home Visit Services Delivered to Your Doorstep"
-        lead="Schedule professional healthcare visits at home with our experienced medical team. Quality care in the comfort of your own space."
-        primaryCta={{ label: "Book Now", href: "/home-visit/" }}
-        secondaryCta={{ label: "Explore Long Term Care", href: "/long-term-care/" }}
-        trustItems={[
-          { icon: BadgeCheck, label: "Trained & verified caregivers" },
-          { icon: ShieldCheck, label: "Hospital-grade care at home" },
-          { icon: HeartHandshake, label: "Compassionate, reliable support" },
-        ]}
+      {/* 1. HERO — service selector + Book Now + phone (replaces 13-button wall) */}
+      <HeroSection
+        title="Apollo Homecare Services"
+        tagline="Hospital-grade care at your doorstep — long term care, home visits, nursing procedures, and diagnostics delivered by trained, verified professionals."
+        selectorGroups={selectorGroups}
+        trustItems={HERO_TRUST_ITEMS}
       />
 
-      <section className="border-b border-neutral-200 bg-white">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 py-10 md:grid-cols-4">
-          {TRUST_STATS.map((stat) => (
-            <div key={stat.label} className="flex flex-col items-center gap-1 text-center">
-              <stat.icon size={24} strokeWidth={1.5} aria-hidden="true" className="mb-1 text-primary-700" />
-              <p className="font-display text-3xl text-neutral-900 tabular-nums">{stat.value}</p>
-              <p className="text-sm text-neutral-600">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* 2. STATS BAR — directly under hero (1Mn+, QAI, 2K+, 4.9) */}
+      <StatsStrip />
 
+      {/* 3. SERVICES OVERVIEW — 5 verticals, simplified icon + title + Book Now cards.
+          Rhythm mirrors portea.com: ivory/white alternation on the service grids. */}
       <ServiceGridSection
+        tone="off-white"
         eyebrow="Long Term Care"
-        title="Compassionate care you can trust at home"
+        title="Compassionate Care You Can Trust at Home"
         lead="Expert care for your loved ones, combining medical excellence with the comfort of home."
         items={data.popularServices}
+        seeAllHref="/long-term-care/"
       />
 
+      <ServiceGridSection
+        tone="white"
+        eyebrow="Home Visit"
+        title="Professional Healthcare at Your Doorstep"
+        lead="Easily book doctors, physiotherapists, and post-surgical support at home."
+        items={data.homeVisitServices}
+        seeAllHref="/home-visit/"
+      />
+
+      <ServiceGridSection
+        tone="off-white"
+        eyebrow="Home Visit · Nursing Procedures"
+        title="Nurse Procedures at Home"
+        lead="Services like wound care and urinary catheterisation, delivered safely in the comfort of your home."
+        items={data.homeVisitProcedures}
+        variant="procedure"
+        columns={2}
+        seeAllHref="/home-visit/"
+      />
+
+      {/* Diagnostics / Vaccination / Equipment — same card treatment */}
+      <ServiceGridSection
+        tone="white"
+        eyebrow="Home Diagnostics"
+        title="Tests at Home"
+        items={[VERTICAL_CARDS.diagnostics]}
+        variant="vertical"
+        seeAllHref="/home-diagnostics/"
+      />
+
+      <ServiceGridSection
+        tone="off-white"
+        eyebrow="Adult Vaccination"
+        title="Stay Protected"
+        items={[VERTICAL_CARDS.vaccination]}
+        variant="vertical"
+        seeAllHref="/adult-vaccination/"
+      />
+
+      <ServiceGridSection
+        tone="white"
+        eyebrow="Medical Equipment"
+        title="Care Essentials Delivered"
+        items={[VERTICAL_CARDS.equipment]}
+        variant="vertical"
+        seeAllHref="/medical-equipment/"
+      />
+
+      {/* 4. HOW IT WORKS — 4-step booking-to-care flow */}
       <HowItWorksSection
         title="How care at home works"
+        lead="From first call to ongoing follow-up, the Apollo care journey in four steps."
         steps={HOW_IT_WORKS_STEPS}
       />
 
+      {/* 5. OFFERS — placeholder cards [PENDING OFFER DATA] */}
+      <OffersSection />
+
+      {/* 6. TESTIMONIALS — placeholder carousel [PENDING REAL TESTIMONIALS] */}
+      <TestimonialsSection />
+
+      {/* 7. CLINICAL LEADERSHIP — placeholder cards [PENDING FROM CLIENT] */}
+      <ClinicalLeadershipSection />
+
+      {/* 8. WHY CHOOSE US — simplified icon grid */}
       <SafetySection
         eyebrow="Why choose us"
         title="Hospital-grade care, brought home"
@@ -126,25 +256,47 @@ export default async function HomePage() {
         items={SAFETY_ITEMS}
       />
 
-      {data.locations.length > 0 && (
-        <section className="border-t border-neutral-200 bg-white py-10">
-          <div className="mx-auto max-w-6xl px-6">
-            <p className="text-center text-sm font-medium uppercase tracking-[0.08em] text-primary-700">
-              Available in 11 cities
-            </p>
-            <p className="mt-2 text-center text-lg text-neutral-600">
-              {data.locations.map((location) => location.name).join(" · ")}
-            </p>
-          </div>
-        </section>
-      )}
+      {/* 9. CASE STUDIES — skipped for v1 (no real content yet) */}
 
+      {/* 10. PARTNER HOSPITALS — placeholder logo strip [CONFIRM LOGOS] */}
+      <LogosStripSection
+        eyebrow="Partners"
+        title="Trusted by leading hospitals"
+        lead="Apollo Homecare works alongside leading hospitals and healthcare partners."
+        note="[CONFIRM LOGOS / PERMISSION WITH CLIENT] — no logos shown until approved."
+      />
+
+      {/* 11. PRESS / MEDIA — placeholder press logo strip (ivory band, like portea.com) */}
+      <LogosStripSection
+        tone="off-white"
+        eyebrow="In the news"
+        title="As seen in the press"
+        lead="Press mentions and media coverage of Apollo Homecare."
+        note="[CONFIRM PRESS MENTIONS WITH CLIENT] — placeholder chips, real logos/media to be supplied."
+      />
+
+      {/* 12. CITY COVERAGE — state → city accordion (footer links retained for SEO) */}
+      <CityCoverageSection />
+
+      {/* 13. FAQ — before the final CTA */}
+      <FAQSection
+        eyebrow="Common questions"
+        title="Frequently asked questions"
+        items={homeFaqs}
+        seeAllHref="/faq/"
+      />
+
+      {/* 14. FINAL CTA BANNER — "Ready to bring care home?" */}
       <FinalCTASection
-        title="Compassionate Care You Can Trust at Home"
-        lead="Expert care for your loved ones — combining medical excellence with the comfort of home."
-        cta={{ label: "Enquire Now", href: "/long-term-care/" }}
+        title="Ready to bring care home?"
+        lead="Hospital-grade care delivered by trusted professionals — book now or talk to our care team."
+        cta={{ label: "Book Now", href: "/home-visit/" }}
         note="In a medical emergency, our team provides quick response support."
       />
+
+      {/* 15. FOOTER — unchanged (About, Services, Partner, Careers, News &
+          Media, city links). Patient Charter link already fixed to
+          /about/patient-charter/. */}
     </>
   );
 }

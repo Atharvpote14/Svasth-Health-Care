@@ -13,12 +13,12 @@ const fraunces = Fraunces({
 
 export const metadata = {
   title: {
-    default: "CareNest | Expert Healthcare at Home",
-    template: "%s | CareNest",
+    default: "Apollo Homecare | Expert Healthcare at Home",
+    template: "%s | Apollo Homecare",
   },
   description:
     "Professional healthcare services delivered at home by trained professionals — long term care, home visits, and nursing procedures.",
-  metadataBase: new URL("https://www.carenest.in"),
+  metadataBase: new URL("https://www.apollohomecare.com"),
 };
 
 export default function RootLayout({ children }) {

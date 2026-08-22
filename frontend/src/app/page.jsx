@@ -22,23 +22,23 @@ import { getFaqPage, getHomePage } from "../lib/data";
 import { NAV_LINKS, serviceHref } from "../lib/site";
 
 export const metadata = {
-  title: "CareNest | #1 Home Care Services in India",
+  title: "Apollo Homecare | #1 Home Care Services in India",
   description:
-    "Expert healthcare delivered to your doorstep — long term care, home visits, and nursing procedures by trained, verified professionals. Call 1800 000 0000.",
+    "Expert healthcare delivered to your doorstep — long term care, home visits, and nursing procedures by trained, verified professionals. Call 1800 108 8586.",
 };
 
-/* How-it-works steps — real service flow.
+/* How-it-works steps — real Apollo flow (sourced from live service pages).
    [CONFIRM WITH CLIENT] — confirm exact step naming before launch. */
 const HOW_IT_WORKS_STEPS = [
   {
     title: "Book or call us",
     description:
-      "Choose a service on this page or call 1800 000 0000 to share the patient's needs.",
+      "Choose a service on this page or call 1800 108 8586 to share the patient's needs.",
   },
   {
     title: "Clinical assessment",
     description:
-      "Our clinical team evaluates the patient's condition and recommends the right care plan.",
+      "Apollo's team evaluates the patient's condition and recommends the right care plan.",
   },
   {
     title: "Care begins at home",
@@ -52,7 +52,7 @@ const HOW_IT_WORKS_STEPS = [
   },
 ];
 
-/* Why-choose-us grid — unified lucide line icons only, brand palette */
+/* Why-choose-us grid — unified lucide line icons only, Apollo palette */
 const SAFETY_ITEMS = [
   {
     icon: BadgeCheck,
@@ -110,7 +110,7 @@ const VERTICAL_CARDS = {
   },
 };
 
-/* FAQs picked to cover the common questions (real service answers) */
+/* FAQs picked to cover the common questions (real Apollo answers) */
 const HOME_FAQ_IDS = [
   "faq-booking-1",
   "faq-trust-1",
@@ -164,7 +164,7 @@ export default async function HomePage() {
     <>
       {/* 1. HERO — service selector + Book Now + phone (replaces 13-button wall) */}
       <HeroSection
-        title="CareNest Services"
+        title="Apollo Homecare Services"
         tagline="Hospital-grade care at your doorstep — long term care, home visits, nursing procedures, and diagnostics delivered by trained, verified professionals."
         selectorGroups={selectorGroups}
         trustItems={HERO_TRUST_ITEMS}
@@ -235,7 +235,7 @@ export default async function HomePage() {
       {/* 4. HOW IT WORKS — 4-step booking-to-care flow */}
       <HowItWorksSection
         title="How care at home works"
-        lead="From first call to ongoing follow-up, the CareNest care journey in four steps."
+        lead="From first call to ongoing follow-up, the Apollo care journey in four steps."
         steps={HOW_IT_WORKS_STEPS}
       />
 
@@ -252,7 +252,7 @@ export default async function HomePage() {
       <SafetySection
         eyebrow="Why choose us"
         title="Hospital-grade care, brought home"
-        lead="CareNest brings hospital-grade care to your doorstep with professionally trained, background-verified caregivers you can trust."
+        lead="Apollo Homecare brings hospital-grade care to your doorstep with professionally trained, background-verified caregivers you can trust."
         items={SAFETY_ITEMS}
       />
 
@@ -262,7 +262,7 @@ export default async function HomePage() {
       <LogosStripSection
         eyebrow="Partners"
         title="Trusted by leading hospitals"
-        lead="CareNest works alongside leading hospitals and healthcare partners."
+        lead="Apollo Homecare works alongside leading hospitals and healthcare partners."
         note="[CONFIRM LOGOS / PERMISSION WITH CLIENT] — no logos shown until approved."
       />
 
@@ -271,7 +271,7 @@ export default async function HomePage() {
         tone="off-white"
         eyebrow="In the news"
         title="As seen in the press"
-        lead="Press mentions and media coverage of CareNest."
+        lead="Press mentions and media coverage of Apollo Homecare."
         note="[CONFIRM PRESS MENTIONS WITH CLIENT] — placeholder chips, real logos/media to be supplied."
       />
 

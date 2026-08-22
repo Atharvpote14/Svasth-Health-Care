@@ -83,7 +83,6 @@ export function Footer() {
     <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 md:grid-cols-2 lg:grid-cols-4">
       <div><div className="mb-4 flex items-center gap-3"><div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-primary"><Stethoscope size={21} /></div><div><div className="font-display text-lg font-semibold">Apollo</div><div className="text-[10px] uppercase tracking-[0.14em] text-white/60">Homecare</div></div></div><p className="max-w-xs text-sm leading-6 text-white/70">World-class healthcare services delivered to your home with professional medical expertise and personalised care.</p></div>
       <FooterColumn title="Our Services" links={NAV.slice(1)} />
-      <FooterColumn title="Person B" links={[["Medical Equipment", "/medical-equipment/"], ["Home Diagnostics", "/home-diagnostics/"], ["Adult Vaccination", "/adult-vaccination/"], ["Insurance & TPA Tie-ups", "/insurance-tpa-tieups/"], ["Testimonials", "/testimonials/"]]} />
       <div><h3 className="mb-4 font-display text-base text-white">Contact Us</h3><div className="space-y-2 text-sm text-white/75">{CITIES.map((city) => <div key={city}>{city}</div>)}</div><a href="tel:18001088586" className="mt-5 inline-flex items-center gap-2 font-semibold text-white"><Phone size={16} className="text-[#8fe0e3]" />1800 108 8586</a></div>
     </div>
     <div className="border-t border-white/10 py-5 text-center text-sm text-white/60">© {new Date().getFullYear()} Apollo Homecare. All rights reserved.</div>

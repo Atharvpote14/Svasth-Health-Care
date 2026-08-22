@@ -1,11 +1,19 @@
 /**
- * Local site content — REAL content sourced from the live website
- * (apollohomecare.com service pages), matching the site's branding and details.
+ * Local site content for the CareNest platform.
  *
- * Prices, service details, availability, cities, and contact channels are
- * factual. Replaced by the live API when ready — swap via
- * NEXT_PUBLIC_USE_MOCK_DATA=false.
+ * [DE-BRANDED] All references to the reference site (Apollo) — brand name,
+ * helpline, email, and lifted copy — have been removed per
+ * docs/PROJECT_CONTEXT.md §7 and docs/BRAND_IDENTITY.md, which prohibit
+ * Apollo branding and any implied hospital-network affiliation.
  *
+ * [REWRITE PENDING] Service descriptions below still follow the structure of
+ * the reference site and must be rewritten in original CareNest voice before
+ * production. Do not treat prices, timings, or clinical claims as approved.
+ *
+ * [PLACEHOLDER] Contact details in lib/site.js are placeholders pending real
+ * CareNest numbers from the client.
+ *
+ * Replaced by the live API when ready — swap via NEXT_PUBLIC_USE_MOCK_DATA=false.
  * Shapes follow docs/API_SPECIFICATION.md.
  */
 
@@ -32,7 +40,7 @@ export const services = [
     id: "svc-ltc-nurse",
     slug: "nurse-at-home",
     name: "Specialised Nurse at Home",
-    tagline: "Apollo nurse at home — skilled nursing care for post-operative recovery, chronic conditions, and daily medical support at home.",
+    tagline: "Skilled nurse at home — skilled nursing care for post-operative recovery, chronic conditions, and daily medical support at home.",
     category: { slug: "long-term-care", name: "Long Term Care" },
     icon: "stethoscope",
     image: null,
@@ -41,7 +49,7 @@ export const services = [
     availability: "available",
     type: "long_term",
     overview:
-      "Apollo serves as a bridge between professional medical care and the comfort of one's home, ensuring that patients receive compassionate, personalised, and reliable care tailored to their needs.",
+      "CareNest serves as a bridge between professional medical care and the comfort of one's home, ensuring that patients receive compassionate, personalised, and reliable care tailored to their needs.",
     who_its_for: [
       "Patients recovering from surgery or illness",
       "Chronic conditions that require ongoing care",
@@ -57,9 +65,9 @@ export const services = [
       "Medication administration and monitoring",
     ],
     how_it_works: [
-      "Contact Apollo Homecare via phone, email, or website",
+      "Contact CareNest via phone, email, or website",
       "Share the patient's condition and needs",
-      "Apollo matches a trained, verified nurse",
+      "We match a trained, verified nurse",
       "Care begins at home on the agreed schedule",
     ],
     faqs: [],
@@ -74,7 +82,7 @@ export const services = [
     icon: "hand-heart",
     image: null,
     price_from: null,
-    price_note: "The time frame of service, the degree of care needed, and the location affect the cost. Apollo offers competitive prices with numerous packages and clear pricing with no hidden fees.",
+    price_note: "The time frame of service, the degree of care needed, and the location affect the cost. We offer competitive prices with numerous packages and clear pricing with no hidden fees.",
     availability: "available",
     type: "long_term",
     overview:
@@ -94,7 +102,7 @@ export const services = [
       "Unlike nurses, trained attendants do not perform medical procedures",
     ],
     how_it_works: [
-      "Get in touch with Apollo Homecare by visiting a nearest Apollo hospital, their customer service hotline, or the website",
+      "Get in touch with CareNest by calling our care team or booking through this website",
       "Based on needs and the patient's condition, the team suggests a qualified caregiver",
       "A consultation with medical specialists may be scheduled to ascertain the degree of care required",
       "The patient is allocated to the trained attendant, who starts helping at home",
@@ -107,7 +115,7 @@ export const services = [
     id: "svc-ltc-icu",
     slug: "icu-at-home",
     name: "ICU at Home",
-    tagline: "Apollo ICU at home — expert critical care in the comfort of your home, with hospital-grade equipment and trained staff.",
+    tagline: "ICU at home — expert critical care in the comfort of your home, with hospital-grade equipment and trained staff.",
     category: { slug: "long-term-care", name: "Long Term Care" },
     icon: "monitor-heart",
     image: null,
@@ -133,7 +141,7 @@ export const services = [
     ],
     how_it_works: [
       "Enquire about ICU at Home",
-      "Apollo discusses the patient's condition and requirements",
+      "Our team discusses the patient's condition and requirements",
       "A customised care plan and equipment setup are arranged",
       "The care team begins round-the-clock care at home",
     ],
@@ -149,11 +157,11 @@ export const services = [
     icon: "users",
     image: null,
     price_from: null,
-    price_note: "Subscription plans: Basic, Advanced Medical (Recommended), and Premium. Apollo's subscription plans are cost-effective compared to ad-hoc services.",
+    price_note: "Subscription plans: Basic, Advanced Medical (Recommended), and Premium. Our subscription plans are cost-effective compared to ad-hoc services.",
     availability: "available",
     type: "long_term",
     overview:
-      "Apollo Elder Care Subscription is a customised healthcare and support plan specially designed for elderly individuals to ensure their well-being and comfort at home. It provides continuous professional care, personalised attention, and essential services on a subscription basis.",
+      "The CareNest Elder Care Subscription is a customised healthcare and support plan specially designed for elderly individuals to ensure their well-being and comfort at home. It provides continuous professional care, personalised attention, and essential services on a subscription basis.",
     who_its_for: [
       "Elderly individuals living alone who need assistance with daily tasks",
       "Seniors recovering from surgery or illness who require post-hospital care",
@@ -184,7 +192,7 @@ export const services = [
     id: "svc-hv-doctor",
     slug: "doctor-at-home",
     name: "Doctor at Home",
-    tagline: "Apollo Doctor at Home — expert medical care at your doorstep, ensuring convenience, comfort, and peace of mind.",
+    tagline: "Doctor at Home — expert medical care at your doorstep, ensuring convenience, comfort, and peace of mind.",
     category: { slug: "home-visits", name: "Home Visit" },
     icon: "user-round",
     image: null,
@@ -193,7 +201,7 @@ export const services = [
     availability: "available",
     type: "visit",
     overview:
-      "Apollo Home Care's Doctor at Home Service brings expert medical care to your doorstep. Our skilled doctors provide routine checkups, acute care, post-operative support, elderly care, and palliative care — tailored to your unique needs.",
+      "CareNest's Doctor at Home Service brings expert medical care to your doorstep. Our skilled doctors provide routine checkups, acute care, post-operative support, elderly care, and palliative care — tailored to your unique needs.",
     who_its_for: [
       "Patients with mobility challenges who find travel difficult",
       "People with chronic conditions needing timely attention",
@@ -205,7 +213,7 @@ export const services = [
       "Specialised Doctor at Home — targeted expertise for complicated medical issues",
     ],
     how_it_works: [
-      "Book your Apollo Doctor at home appointment",
+      "Book your Doctor at Home appointment",
       "Choose tele consultation or a home visit",
       "A doctor provides care at the scheduled time",
       "Prescription and follow-up support follow",
@@ -217,7 +225,7 @@ export const services = [
     id: "svc-hv-physio",
     slug: "physiotherapy-at-home",
     name: "Physiotherapist at Home",
-    tagline: "Apollo physiotherapists deliver expert care at home to enhance mobility and improve quality of life.",
+    tagline: "Our physiotherapists deliver expert care at home to enhance mobility and improve quality of life.",
     category: { slug: "home-visits", name: "Home Visit" },
     icon: "activity",
     image: null,
@@ -226,7 +234,7 @@ export const services = [
     availability: "available",
     type: "visit",
     overview:
-      "Our Apollo physiotherapists deliver expert care at home to enhance mobility and improve quality of life. Collaborating with your doctor and Homecare nurses, they address challenges from illness, injury, disability, or aging — all in the comfort and safety of your home.",
+      "Our physiotherapists deliver expert care at home to enhance mobility and improve quality of life. Collaborating with your doctor and Homecare nurses, they address challenges from illness, injury, disability, or aging — all in the comfort and safety of your home.",
     who_its_for: [
       "Recovery from injuries, surgeries, or chronic conditions",
       "Mobility and balance concerns",
@@ -265,7 +273,7 @@ export const services = [
     availability: "available",
     type: "visit",
     overview:
-      "Post-surgical care at home helps patients recovering from surgery, injury, or illness receive skilled care without hospital stays. Apollo nurses assist with wound care, medication, and daily recovery needs, enabling quicker recovery in familiar surroundings.",
+      "Post-surgical care at home helps patients recovering from surgery, injury, or illness receive skilled care without hospital stays. Our nurses assist with wound care, medication, and daily recovery needs, enabling quicker recovery in familiar surroundings.",
     who_its_for: [
       "Patients recovering from surgery who require skilled care at home",
       "Recovery after hospitalisation, including post-operative wound care",
@@ -280,7 +288,7 @@ export const services = [
     ],
     how_it_works: [
       "Enquire about post-surgical care",
-      "Apollo assesses the recovery needs",
+      "Our team assesses the recovery needs",
       "A care plan with nursing visits begins at home",
       "Recovery progress is monitored and adjusted",
     ],
@@ -308,7 +316,7 @@ export const services = [
       "Bedridden or elderly patients who would otherwise require hospital visits",
     ],
     whats_included: [
-      "Safe, precise tube insertion by Apollo's trained nurses with minimal discomfort",
+      "Safe, precise tube insertion by our trained nurses with minimal discomfort",
       "Strict sterilisation protocols to prevent infections",
       "Guidance on appropriate feeding schedules and nutrition plans",
       "Regular checks to ensure the tube remains functional",
@@ -436,7 +444,7 @@ export const services = [
     availability: "available",
     type: "long_term",
     overview:
-      "Tracheostomy care at home is provided by Apollo's trained nurses as part of skilled long-term care, supporting patients with airway management needs and training families on safe daily care.",
+      "Tracheostomy care at home is provided by our trained nurses as part of skilled long-term care, supporting patients with airway management needs and training families on safe daily care.",
     who_its_for: [
       "Patients with tracheostomy or ventilator-related care needs",
       "Families needing daily care guidance for a tracheostomy patient",
@@ -449,7 +457,7 @@ export const services = [
     ],
     how_it_works: [
       "Enquire about tracheostomy care",
-      "Apollo assesses the patient's needs",
+      "Our team assesses the patient's needs",
       "A trained nurse provides care at home",
       "Family is trained for daily management",
     ],
@@ -528,7 +536,7 @@ export const faqs = [
     category: "icu",
     question: "What if there's a medical emergency at home?",
     answer:
-      "Apollo provides emergency support with quick response in case of any complications, as part of the ICU at Home service.",
+      "We provide emergency support with quick response in case of any complications, as part of the ICU at Home service.",
   },
   {
     id: "faq-icu-7",
@@ -570,21 +578,21 @@ export const faqs = [
     category: "booking",
     question: "How can I contact the care team?",
     answer:
-      "Call 1800 108 8586, email care@apollohomecare.com, or reach us on WhatsApp at +91 7075448283.",
+      "Call 1800 000 0000, email care@carenest.in, or reach us on WhatsApp at +91 00000 00000.",
   },
   {
     id: "faq-trust-1",
     category: "trust",
     question: "Are your professionals verified?",
     answer:
-      "Yes. Apollo ensures that all attendants and nurses are well-trained, background-verified, and experienced in handling patients with various medical needs.",
+      "Yes. We ensure that all attendants and nurses are well-trained, background-verified, and experienced in handling patients with various medical needs.",
   },
   {
     id: "faq-trust-2",
     category: "trust",
     question: "How is the quality of care ensured?",
     answer:
-      "Apollo follows strict quality control measures, professional clinical care, and sterilisation and safety protocols across all services.",
+      "We follow strict quality control measures, professional clinical care, and sterilisation and safety protocols across all services.",
   },
 ];
 

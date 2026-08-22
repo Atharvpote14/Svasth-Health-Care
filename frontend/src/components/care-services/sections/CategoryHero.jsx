@@ -6,7 +6,7 @@ import Reveal from "../../Reveal";
  * Polish: staggered fade + upward slide entrance (eyebrow → title → lead →
  * CTAs → trust items) via Reveal, so the hero reads as calm and deliberate.
  * CHANGE (7-color system): white base background, H1 in Neutral Dark #1F2937,
- * supporting sub-headline in Neutral Mid #5C6570, primary CTA in Apollo Red,
+ * supporting sub-headline in Neutral Mid #5C6570, primary CTA in brand red,
  * secondary CTA in Trust Blue outline, trust icons in Trust Blue.
  */
 

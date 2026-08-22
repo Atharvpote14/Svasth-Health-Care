@@ -62,7 +62,7 @@ const CityCoverageSection = ({ states = CITY_STATES, className = "" }) => {
               Care available across 11 cities
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-lg leading-[1.6] text-neutral-600">
-              Select a region to see the cities where Apollo Homecare operates.
+              Select a region to see the cities where CareNest operates.
             </p>
           </div>
 

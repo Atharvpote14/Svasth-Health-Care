@@ -4,12 +4,18 @@
  * Route paths match docs/PERSON_A_SITEMAP.md (canonical sitemap).
  */
 
-export const SITE_NAME = "Apollo Homecare";
-export const PHONE_NUMBER = "1800 108 8586";
-export const PHONE_HREF = "tel:18001088586";
-export const WHATSAPP_NUMBER = "+91 7075448283";
-export const WHATSAPP_HREF = "https://api.whatsapp.com/send/?phone=917075448283&text=Hi";
-export const CONTACT_EMAIL = "care@apollohomecare.com";
+/* Brand name per docs/BRAND_IDENTITY.md §2 (working name — client to approve). */
+export const SITE_NAME = "CareNest";
+
+/* [PLACEHOLDER — REPLACE WITH REAL CARENEST DETAILS BEFORE LAUNCH]
+   The reference site's live helpline/WhatsApp/email were removed: publishing
+   another provider's contact channels implies affiliation (prohibited by
+   docs/BRAND_IDENTITY.md §1) and would misroute real patient calls. */
+export const PHONE_NUMBER = "1800 000 0000";
+export const PHONE_HREF = "tel:18000000000";
+export const WHATSAPP_NUMBER = "+91 00000 00000";
+export const WHATSAPP_HREF = "https://api.whatsapp.com/send/?phone=910000000000&text=Hi";
+export const CONTACT_EMAIL = "care@carenest.in";
 
 export const SUPPORTED_CITIES = [
   "Hyderabad",

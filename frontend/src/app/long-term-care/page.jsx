@@ -8,7 +8,7 @@ import { getHubPage, getCategories } from "@/lib/data";
  */
 export async function generateMetadata() {
   const hub = await getHubPage("long-term-care");
-  if (!hub) return { title: "Long Term Care | Apollo Homecare" };
+  if (!hub) return { title: "Long Term Care | CareNest" };
   return {
     title: hub.title,
     description: hub.lead,

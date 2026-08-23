@@ -65,10 +65,15 @@ const config = {
         },
       },
       fontFamily: {
-        /* Portea --font-display: "Fraunces","Fraunces-fallback",Georgia,serif
-           (600 loaded). Body: Poppins declared but NOT loaded on portea.com —
-           falls back to system sans, which is what we mirror. */
-        display: ["Fraunces", "Georgia", "serif"],
+        /* --font-display: "Fraunces", Georgia, serif (variable weight axis).
+           BUGFIX: this list previously named "Fraunces" directly and so never
+           picked up the webfont that next/font downloads into
+           --font-fraunces — headings silently fell through to Georgia. The
+           var() carries a literal fallback, so any page that does not define
+           the custom property (every Pages Router page, which is wrapped by
+           pages/_app.jsx rather than app/layout.jsx) resolves to exactly the
+           same stack it resolved to before. */
+        display: ["var(--font-fraunces, Fraunces)", "Georgia", "serif"],
         sans: [
           "ui-sans-serif",
           "system-ui",
@@ -80,6 +85,26 @@ const config = {
           "Segoe UI Emoji",
           "Segoe UI Symbol",
           "Noto Color Emoji",
+        ],
+        /* Care-services (Person A) reading pair, loaded in app/layout.jsx.
+           IBM Plex Sans holds long clinical prose at 15-17px without the
+           startup-generic feel of Inter; IBM Plex Mono supplies the tabular
+           figures the availability/price spec rows depend on. Both fall back
+           to the previous stack when the custom property is absent. */
+        body: [
+          "var(--font-plex-sans, ui-sans-serif)",
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "Roboto",
+          "sans-serif",
+        ],
+        mono: [
+          "var(--font-plex-mono, ui-monospace)",
+          "SFMono-Regular",
+          "Menlo",
+          "Consolas",
+          "monospace",
         ],
       },
       borderRadius: {
@@ -109,9 +134,42 @@ const config = {
           from: { opacity: "0" },
           to: { opacity: "1" },
         },
+        /* ---- Care-services motion (additive; names are namespaced so no
+           existing utility changes behaviour) ---- */
+        "care-rise": {
+          from: { opacity: "0", transform: "translate3d(0, 14px, 0)" },
+          to: { opacity: "1", transform: "none" },
+        },
+        /* Line-by-line hero reveal: the text wipes up from under its own
+           baseline rather than fading in place, which reads as deliberate
+           rather than as a generic entrance. */
+        "care-wipe": {
+          from: { opacity: "0", transform: "translate3d(0, 105%, 0)" },
+          to: { opacity: "1", transform: "none" },
+        },
+        /* Ambient ring on the live-availability dot. Used once per card. */
+        "care-ping": {
+          "0%": { transform: "scale(0.9)", opacity: "0.55" },
+          "70%": { transform: "scale(2.1)", opacity: "0" },
+          "100%": { transform: "scale(2.1)", opacity: "0" },
+        },
+        "care-draw": {
+          from: { transform: "scaleX(0)" },
+          to: { transform: "scaleX(1)" },
+        },
+        "care-slide-up": {
+          from: { transform: "translate3d(0, 100%, 0)" },
+          to: { transform: "none" },
+        },
       },
       animation: {
         "fade-in": "fade-in 400ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "care-rise": "care-rise 620ms cubic-bezier(0.22, 1, 0.36, 1) both",
+        "care-wipe": "care-wipe 720ms cubic-bezier(0.22, 1, 0.36, 1) both",
+        "care-ping": "care-ping 2600ms cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "care-draw": "care-draw 520ms cubic-bezier(0.22, 1, 0.36, 1) both",
+        "care-slide-up":
+          "care-slide-up 420ms cubic-bezier(0.22, 1, 0.36, 1) both",
       },
     },
   },

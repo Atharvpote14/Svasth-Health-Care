@@ -51,18 +51,18 @@ const TestimonialsSection = ({ items = PLACEHOLDER_TESTIMONIALS, className = "" 
   };
 
   return (
-    <section className={`bg-white py-10 md:py-[70px] ${className}`}>
+    <section className={`bg-white py-14 md:py-[88px] ${className}`}>
       <Reveal>
         <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <div className="mb-11 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+              <p className="care-eyebrow mb-4">
                 Testimonials
               </p>
-              <h2 className="font-display text-[24px] font-semibold leading-[1.3] text-neutral-900 md:text-[36px]">
+              <h2 className="care-h2 font-display">
                 Families trust Apollo Homecare
               </h2>
-              <p className="mt-3 max-w-2xl text-lg leading-[1.6] text-neutral-600">
+              <p className="care-lead mt-4 max-w-2xl">
                 [PENDING REAL TESTIMONIALS — DO NOT PUBLISH WITH DUMMY TEXT]
               </p>
             </div>

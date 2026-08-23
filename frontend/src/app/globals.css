@@ -330,3 +330,494 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   CARE-SERVICES DESIGN LANGUAGE — "threshold"
+   ══════════════════════════════════════════════════════════════════════════
+   ADDITIVE ONLY. Everything above this line is shared: pages/_app.jsx imports
+   this same stylesheet, and pages/diagnostics-equipment/shared.jsx consumes
+   .btn / .card / .badge / .accordion / .section-title. Nothing below redefines
+   any of those. Every selector here is either prefixed `care-` or nested inside
+   `.care-theme`, a class applied only by app/layout.jsx, so the Pages Router
+   renders exactly as it did before.
+
+   ── The motif, and why it changed ──────────────────────────────────────────
+   This layer previously drew the bedside observation chart: ruled hairline
+   grounds, a margin rule down the left edge, dotted leaders running from a
+   label to its value, mono uppercase captions. It was internally consistent and
+   it was wrong twice over. Wrong reader — the chart is the clinician's artifact,
+   while the person on this page is a son or daughter arranging care for a
+   parent. Wrong feeling — ruled paper reads as a notebook, and a page of
+   hairlines and dotted leaders reads as a ledger of what went wrong.
+
+   The motif is now the threshold: the moment care crosses into someone's home.
+   Its vocabulary is domestic rather than clinical — warm light on a dark ground,
+   soft rounded surfaces that sit on the page and cast light, generous space, and
+   the arch of a doorway. The arch is the signature and appears at two scales:
+   once, large, as a doorway of light behind the hero headline, and small as the
+   icon plate on every card. It is drawn from verandah and jaali arches rather
+   than from western product geometry, which is the audience's own architecture.
+
+   Structure still has to earn its place: numbers appear only on the how-it-works
+   rail, which is a real sequence, and the spec pills carry price and care type,
+   the two facts a family actually decides on.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+@layer components {
+  .care-theme {
+    /* Palette derived from the shared brand teal, so nothing here forks the
+       Tailwind config that B's and C's pages also read. Deliberately cool: the
+       ivory/cream grounds this layer used to sit on turn Fraunces into the
+       standard editorial-serif-on-cream look, which is not this brand. */
+    --care-ink: #0c2b2b;
+    --care-mute: #5b6d6d;
+    --care-accent: #00979e;
+    --care-accent-soft: rgba(0, 151, 158, 0.09);
+    --care-accent-line: rgba(0, 151, 158, 0.22);
+    --care-mist: #edf4f3;
+    --care-paper: #ffffff;
+    --care-rule: rgba(12, 43, 43, 0.07);
+    --care-rule-strong: rgba(12, 43, 43, 0.12);
+
+    /* Two-part shadows: a tight contact shadow so the surface reads as resting
+       on the page, and a wide soft one for the light it displaces. */
+    --care-shadow: 0 1px 2px rgba(12, 43, 43, 0.04),
+      0 12px 30px -22px rgba(12, 43, 43, 0.28);
+    --care-shadow-lift: 0 2px 4px rgba(12, 43, 43, 0.05),
+      0 28px 52px -28px rgba(12, 43, 43, 0.42);
+
+    font-family: theme("fontFamily.body");
+    font-variant-numeric: normal;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Inverted token set for the lit-dark grounds. Applied alongside .care-sheet
+     so an entire subtree flips in one place. The accent has to change with it:
+     brand teal on this ground is about 2.2:1, mint is over 9:1. */
+  .care-on-dark {
+    --care-ink: #ffffff;
+    --care-mute: rgba(232, 250, 249, 0.74);
+    --care-accent: #8fe0e3;
+    --care-accent-soft: rgba(143, 224, 227, 0.13);
+    --care-accent-line: rgba(143, 224, 227, 0.3);
+    --care-mist: rgba(255, 255, 255, 0.06);
+    --care-paper: rgba(255, 255, 255, 0.05);
+    --care-rule: rgba(143, 224, 227, 0.16);
+    --care-rule-strong: rgba(143, 224, 227, 0.28);
+    --care-shadow: none;
+    --care-shadow-lift: 0 26px 50px -30px rgba(0, 0, 0, 0.65);
+  }
+
+  /* ---------- Display type ----------
+     Fraunces is variable across SOFT and WONK. SOFT is pushed to 60 (it was 12):
+     rounded terminals do most of the work of making a healthcare page feel
+     humane, and they cost nothing. WONK stays at 0 — the swashy alternates are
+     charming and would undercut the competence half of the message. */
+  .care-theme h1,
+  .care-theme h2,
+  .care-theme h3 {
+    font-variation-settings: "SOFT" 60, "WONK" 0;
+    letter-spacing: -0.016em;
+  }
+
+  .care-wordmark {
+    font-variation-settings: "SOFT" 60, "WONK" 0;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .care-header {
+    background-color: rgba(255, 255, 255, 0.82);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+  }
+
+  /* Fluid across the whole viewport range rather than one md: step. Rounder
+     terminals need marginally more air than the old -0.03em allowed. */
+  .care-display {
+    font-size: clamp(2.5rem, 1.6rem + 4.1vw, 4.5rem);
+    line-height: 1.06;
+    letter-spacing: -0.026em;
+    font-weight: 600;
+  }
+
+  .care-h2 {
+    font-size: clamp(1.8125rem, 1.35rem + 2vw, 2.875rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    color: var(--care-ink);
+  }
+
+  .care-h3 {
+    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+    line-height: 1.32;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    color: var(--care-ink);
+  }
+
+  .care-lead {
+    font-size: clamp(1.0625rem, 1rem + 0.45vw, 1.25rem);
+    line-height: 1.62;
+    color: var(--care-mute);
+    text-wrap: pretty;
+  }
+
+  .care-body {
+    font-size: 1rem;
+    line-height: 1.72;
+    color: var(--care-mute);
+    text-wrap: pretty;
+  }
+
+  /* ---------- Labels ----------
+     Sentence-case sans, no leading rule, no letterspaced uppercase. A caption
+     set in monospace claims the page is technical output; this one is a person
+     telling you what the next thing is. */
+  .care-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    color: var(--care-accent);
+  }
+
+  .care-eyebrow-center {
+    justify-content: center;
+  }
+
+  /* Utility/action text — "View details", "All questions", breadcrumbs. */
+  .care-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+  }
+
+  /* A label that needs presence gets a soft chip rather than more tracking. */
+  .care-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4375rem;
+    border-radius: 9999px;
+    padding: 0.3125rem 0.75rem;
+    background-color: var(--care-accent-soft);
+    color: var(--care-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    white-space: nowrap;
+  }
+
+  /* ---------- Grounds ---------- */
+  .care-band {
+    background-color: var(--care-mist);
+  }
+
+  /* The dark ground under the heroes and the closing CTA. Two radial blooms over
+     a diagonal gradient: light entering from the top right, a warmer pool of it
+     at the lower left. Replaces the 44px hairline ruling that made this a sheet
+     of graph paper. Always paired with .care-on-dark. */
+  .care-sheet {
+    background-color: #06282a;
+    background-image:
+      radial-gradient(
+        120% 90% at 84% -12%,
+        rgba(143, 224, 227, 0.2) 0%,
+        rgba(143, 224, 227, 0) 58%
+      ),
+      radial-gradient(
+        95% 75% at 6% 110%,
+        rgba(0, 151, 158, 0.28) 0%,
+        rgba(0, 151, 158, 0) 62%
+      ),
+      linear-gradient(168deg, #0b3a38 0%, #072a2b 56%, #061f21 100%);
+  }
+
+  /* ---------- The arch (signature) ----------
+     A doorway of light standing on the hero's baseline. One instance per page,
+     decorative, always aria-hidden. The glow breathes on a 14s cycle — slow
+     enough to register as light rather than as an animation. */
+  .care-arch {
+    position: absolute;
+    border: 1px solid var(--care-accent-line);
+    border-radius: 999px 999px 24px 24px;
+    background-image: radial-gradient(
+      110% 68% at 50% 104%,
+      rgba(143, 224, 227, 0.16) 0%,
+      rgba(143, 224, 227, 0) 72%
+    );
+    animation: care-glow 14s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes care-glow {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  /* ---------- Card ----------
+     A surface resting on the page: 20px radius, no border, layered shadow. The
+     hairline border and the accent bar that used to wipe along the bottom edge
+     on hover are both gone — the bar was the one bit of pure decoration in the
+     old language, and the lift plus the plate filling in says the same thing
+     about interactivity while pointing at the card's actual subject. */
+  .care-card {
+    position: relative;
+    display: flex;
+    block-size: 100%;
+    flex-direction: column;
+    border-radius: 20px;
+    background-color: var(--care-paper);
+    box-shadow: var(--care-shadow);
+    transition:
+      box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* On a lit ground the paper token is translucent, so the card needs an edge to
+     exist at all. */
+  .care-on-dark .care-card {
+    border: 1px solid var(--care-rule);
+  }
+
+  .care-card:hover,
+  .care-card:focus-within {
+    box-shadow: var(--care-shadow-lift);
+    transform: translate3d(0, -4px, 0);
+  }
+
+  .care-on-dark .care-card:hover,
+  .care-on-dark .care-card:focus-within {
+    background-color: rgba(255, 255, 255, 0.09);
+    border-color: var(--care-accent-line);
+  }
+
+  /* The arch at small scale. Taller than it is wide so the curve reads as an
+     opening rather than a rounded app icon. */
+  .care-plate {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 2.875rem;
+    block-size: 3.25rem;
+    flex: none;
+    border-radius: 999px 999px 12px 12px;
+    background-color: var(--care-accent-soft);
+    color: var(--care-accent);
+    transition:
+      background-color 300ms cubic-bezier(0.22, 1, 0.36, 1),
+      color 300ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .care-card:hover .care-plate,
+  .care-card:focus-within .care-plate {
+    background-color: var(--care-accent);
+    color: #ffffff;
+    transform: translate3d(0, -2px, 0);
+  }
+
+  /* Mint fill needs dark glyphs, not white ones. */
+  .care-on-dark .care-card:hover .care-plate,
+  .care-on-dark .care-card:focus-within .care-plate {
+    color: #06282a;
+  }
+
+  /* ---------- Spec row ----------
+     Was `label ......... value` with a dotted leader. Now a quiet key beside a
+     tinted pill: the same two facts, read as a stated figure instead of a line
+     item in an invoice. */
+  .care-spec {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--care-mute);
+  }
+
+  .care-spec-key {
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* Retired with the leader. Kept as a no-op so any straggling consumer renders
+     nothing rather than an unstyled span. */
+  .care-spec-fill {
+    display: none;
+  }
+
+  .care-spec-value {
+    white-space: nowrap;
+    border-radius: 9999px;
+    background-color: var(--care-mist);
+    padding: 0.1875rem 0.5625rem;
+    font-weight: 600;
+    color: var(--care-ink);
+  }
+
+  /* ---------- Live availability dot ----------
+     The one ambient animation besides the arch, and it signals something true:
+     the care team is reachable now. */
+  .care-dot {
+    position: relative;
+    display: inline-flex;
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    flex: none;
+    border-radius: 9999px;
+    background-color: currentColor;
+  }
+
+  .care-dot-live::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background-color: currentColor;
+    animation: theme("animation.care-ping");
+  }
+
+  /* ---------- List ----------
+     "Who it's for" and "What's included". Was one hairline per row, which turned
+     a list of eight things into eight ledger entries. Now spacing separates the
+     rows and a soft round marker holds the gutter. */
+  .care-log {
+    display: grid;
+    gap: 0.9375rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .care-log-item {
+    display: grid;
+    grid-template-columns: 1.625rem 1fr;
+    align-items: start;
+    gap: 0.8125rem;
+  }
+
+  .care-log-marker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 1.625rem;
+    block-size: 1.625rem;
+    margin-block-start: 0.0625rem;
+    border-radius: 9999px;
+    background-color: var(--care-accent-soft);
+    color: var(--care-accent);
+  }
+
+  /* ---------- Step rail ----------
+     Numbering is kept because how-it-works genuinely is an ordered sequence, but
+     it moves from a mono tick hanging off a rule into a filled counter. */
+  .care-rail-item {
+    position: relative;
+  }
+
+  .care-rail-index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 2.375rem;
+    block-size: 2.375rem;
+    border-radius: 9999px;
+    background-color: var(--care-accent-soft);
+    color: var(--care-accent);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- Dividers ----------
+     Still available where a divider is doing real work (separating a card's
+     footer from its body), but softened and no longer a design device. */
+  .care-rule-top {
+    border-block-start: 1px solid var(--care-rule-strong);
+  }
+
+  .care-hairline {
+    border-block-start: 1px solid var(--care-rule);
+  }
+
+  /* Retired with the ruled sheet. */
+  .care-margin-rule {
+    display: none;
+  }
+
+  /* ---------- Orchestrated entrance ----------
+     CSS-only and driven by an inline --care-i index, so it runs on first paint
+     with no hydration flash and no client component. */
+  .care-mask {
+    display: block;
+    overflow: hidden;
+    /* Room for descenders, which the tight display line-height would otherwise
+       let the overflow clip. Negated by the matching margin so the mask adds no
+       visible space. */
+    padding-block-end: 0.16em;
+    margin-block-end: -0.16em;
+  }
+
+  .care-wipe {
+    display: block;
+    animation: theme("animation.care-wipe");
+    animation-delay: calc(var(--care-i, 0) * 90ms);
+  }
+
+  .care-rise {
+    animation: theme("animation.care-rise");
+    animation-delay: calc(var(--care-i, 0) * 90ms);
+  }
+
+  /* ---------- Sticky mobile bar ---------- */
+  .care-dock {
+    animation: theme("animation.care-slide-up");
+    animation-delay: 240ms;
+    padding-block-end: max(0.75rem, env(safe-area-inset-bottom));
+  }
+
+  /* ---------- Focus ----------
+     Sits on top of the global :focus-visible ring, tightened for the darker care
+     surfaces where the white offset ring disappeared. */
+  .care-theme :focus-visible {
+    outline: 2px solid var(--care-accent);
+    outline-offset: 2px;
+  }
+
+  .care-on-dark :focus-visible {
+    outline-color: #8fe0e3;
+  }
+}
+
+/* The shared reduced-motion block above zeroes durations but not delays, which
+   would leave `both`-filled entrance animations invisible for up to half a
+   second. Zero them here too, and stop the two ambient loops outright. */
+@media (prefers-reduced-motion: reduce) {
+  .care-wipe,
+  .care-rise,
+  .care-dock {
+    animation-delay: 0s !important;
+  }
+
+  .care-arch,
+  .care-dot-live::before {
+    animation: none !important;
+  }
+
+  .care-card:hover,
+  .care-card:focus-within,
+  .care-card:hover .care-plate {
+    transform: none;
+  }
+}

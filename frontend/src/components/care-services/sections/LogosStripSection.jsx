@@ -19,24 +19,24 @@ const LogosStripSection = ({
 }) => {
   return (
     <section
-      className={`py-10 md:py-[70px] ${
-        tone === "off-white" ? "bg-neutral-100" : "bg-white"
+      className={`py-14 md:py-[88px] ${
+        tone === "off-white" ? "care-band" : "bg-white"
       } ${className}`}
     >
       <Reveal>
         <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-10 text-center">
+          <div className="mb-11 text-center">
             {eyebrow && (
-              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+              <p className="care-eyebrow mb-4">
                 {eyebrow}
               </p>
             )}
             {title && (
-              <h2 className="font-display text-[24px] font-semibold leading-[1.3] text-neutral-900 md:text-[36px]">
+              <h2 className="care-h2 font-display">
                 {title}
               </h2>
             )}
-            {lead && <p className="mx-auto mt-3 max-w-2xl text-lg leading-[1.6] text-neutral-600">{lead}</p>}
+            {lead && <p className="care-lead mx-auto mt-4 max-w-2xl">{lead}</p>}
             <p className="mt-2 text-xs text-neutral-600">{note}</p>
           </div>
 

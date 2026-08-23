@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Reveal from "../../Reveal";
 import ServiceCard from "../domain/ServiceCard";
 import ProcedureCard from "../domain/ProcedureCard";
@@ -6,12 +7,21 @@ import VerticalCard from "../domain/VerticalCard";
 import { serviceHref, procedureHref } from "../../../lib/site";
 
 /**
- * ServiceGridSection — responsive card grid for a service group.
- * Portea medical-sec pattern: section padding 40px mobile / 70px desktop,
- * h2 Fraunces 24px/36px 600, eyebrow 12px/.14em teal, lead 18px, cards in a
- * 3-col grid with 16px gap (12px mobile), ivory #faf7f1 on the "off-white"
- * tone. Card CTAs are outlined teal pills (Portea service-tile-book).
+ * ServiceGridSection — card grid for a service group.
+ *
+ * Two changes worth noting. The section header now uses the chart type scale
+ * (.care-eyebrow / .care-h2 / .care-lead) rather than repeating the same
+ * hand-rolled Tailwind string that appeared in six separate section files, so
+ * heading rhythm is defined once.
+ *
+ * And the reveal is now per-card with a capped stagger, instead of one Reveal
+ * wrapping the whole grid. Cards arriving in sequence reads as the grid being
+ * dealt out; the cap stops the last card of a fourteen-item grid waiting a
+ * second to appear.
  */
+
+const STAGGER_MS = 60;
+const STAGGER_CAP = 6;
 
 const ServiceGridSection = ({
   eyebrow,
@@ -21,9 +31,8 @@ const ServiceGridSection = ({
   variant = "service",
   columns = 3,
   tone = "white",
-  ctaColor = "primary",
   seeAllHref,
-  seeAllLabel = "See all services →",
+  seeAllLabel = "See all services",
   className = "",
 }) => {
   if (items.length === 0) return null;
@@ -37,68 +46,63 @@ const ServiceGridSection = ({
 
   return (
     <section
-      className={`py-10 md:py-[70px] ${
-        tone === "off-white" ? "bg-neutral-100" : "bg-white"
+      className={`py-14 md:py-[88px] ${
+        tone === "off-white" ? "care-band" : "bg-white"
       } ${className}`}
     >
-      <Reveal>
-        <div className="mx-auto max-w-6xl px-6">
-          {(eyebrow || title || lead) && (
-            <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-              <div>
-                {eyebrow && (
-                  <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
-                    {eyebrow}
-                  </p>
-                )}
-                {title && (
-                  <h2 className="font-display text-[24px] font-semibold leading-[1.3] text-neutral-900 md:text-[36px]">
-                    {title}
-                  </h2>
-                )}
-                {lead && (
-                  <p className="mt-3 max-w-2xl text-lg leading-[1.6] text-neutral-600">{lead}</p>
-                )}
+      <div className="mx-auto max-w-6xl px-6">
+        {(eyebrow || title || lead) && (
+          <Reveal>
+            <div className="mb-11 flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
+              <div className="max-w-2xl">
+                {eyebrow && <p className="care-eyebrow mb-4">{eyebrow}</p>}
+                {title && <h2 className="care-h2 font-display">{title}</h2>}
+                {lead && <p className="care-lead mt-4">{lead}</p>}
               </div>
 
               {seeAllHref && (
                 <Link
                   href={seeAllHref}
-                  className="shrink-0 font-medium text-primary hover:text-primary-600 hover:underline"
+                  className="group flex shrink-0 items-center gap-1.5 care-label text-primary hover:text-primary-600"
                 >
                   {seeAllLabel}
+                  <ArrowRight
+                    size={13}
+                    strokeWidth={2}
+                    aria-hidden="true"
+                    className="transition-transform duration-250 ease-standard group-hover:translate-x-1"
+                  />
                 </Link>
               )}
             </div>
-          )}
+          </Reveal>
+        )}
 
-          <div className={`grid grid-cols-1 gap-3 md:gap-4 ${columnClass}`}>
-            {items.map((item) =>
-              variant === "procedure" ? (
-                <ProcedureCard
-                  key={item.slug}
-                  procedure={item}
-                  href={procedureHref(item.slug)}
-                  ctaColor={ctaColor}
-                />
-              ) : variant === "vertical" ? (
-                <VerticalCard
-                  key={item.href || item.title}
-                  item={item}
-                  ctaColor={ctaColor}
-                />
-              ) : (
-                <ServiceCard
-                  key={item.slug}
-                  service={item}
-                  href={serviceHref(item)}
-                  ctaColor={ctaColor}
-                />
-              ),
-            )}
-          </div>
+        <div className={`grid grid-cols-1 gap-4 md:gap-5 ${columnClass}`}>
+          {items.map((item, index) => {
+            const delay = Math.min(index, STAGGER_CAP) * STAGGER_MS;
+
+            return (
+              <Reveal
+                key={item.slug || item.href || item.title}
+                delay={delay}
+                className="h-full"
+              >
+                {variant === "procedure" ? (
+                  <ProcedureCard
+                    procedure={item}
+                    href={procedureHref(item.slug)}
+                  />
+                ) : variant === "vertical" ? (
+                  <VerticalCard item={item} />
+                ) : (
+                  <ServiceCard service={item} href={serviceHref(item)} />
+                )}
+              </Reveal>
+            );
+          })}
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 };

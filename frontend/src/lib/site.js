@@ -25,7 +25,7 @@ export const SUPPORTED_CITIES = [
   "Guwahati",
 ];
 
-const PROCEDURE_SLUGS = [
+export const PROCEDURE_SLUGS = [
   "ryles-tube-insertion",
   "foley-catheter-care",
   "iv-infusion-at-home",

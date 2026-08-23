@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   ArrowRight,
@@ -85,7 +85,7 @@ export function Footer() {
       <FooterColumn title="Our Services" links={NAV.slice(1)} />
       <div><h3 className="mb-4 font-display text-base text-white">Contact Us</h3><div className="space-y-2 text-sm text-white/75">{CITIES.map((city) => <div key={city}>{city}</div>)}</div><a href="tel:18001088586" className="mt-5 inline-flex items-center gap-2 font-semibold text-white"><Phone size={16} className="text-[#8fe0e3]" />1800 108 8586</a></div>
     </div>
-    <div className="border-t border-white/10 py-5 text-center text-sm text-white/60">© {new Date().getFullYear()} Apollo Homecare. All rights reserved.</div>
+    <div className="border-t border-white/10 py-5 text-center text-sm text-white/60">Â© {new Date().getFullYear()} Apollo Homecare. All rights reserved.</div>
   </footer>;
 }
 
@@ -127,3 +127,7 @@ export function FAQ({ items }) { return <Section eyebrow="FAQs" title="Frequentl
 export function FinalCTA({ title, description, href = "/home-diagnostics/", label = "Enquire Now" }) { return <section className="band-dark-dotted-strong py-14 md:py-20"><div className="mx-auto max-w-3xl px-6 text-center"><h2 className="font-display text-[30px] font-semibold text-white md:text-[40px]">{title}</h2><p className="mt-4 text-white/75">{description}</p><div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"><Link href={href} className="btn btn-primary h-12 px-8">{label} <ArrowRight size={17} /></Link><a href="tel:18001088586" className="flex h-12 items-center gap-2 px-5 font-semibold text-white"><Phone size={17} className="text-[#8fe0e3]" />1800 108 8586</a></div></div></section>; }
 
 export { CITIES };
+
+
+
+export default function Shared(){ return null; }

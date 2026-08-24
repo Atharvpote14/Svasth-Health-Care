@@ -35,7 +35,7 @@ function NurseAtHomePage() {
     </Section>
     <Section eyebrow="FAQs" title="Common questions" tone="white">
       <div className="grid gap-3 max-w-3xl">
-        {nurseData.faqs.map((q,i)=><details key={i} className="rounded-xl border border-black/5 bg-neutral-100 p-4"><summary className="font-medium text-neutral-900">{q}</summary><p className="mt-2 text-sm text-neutral-600">Contact 1800 108 8586 for details.</p></details>)}
+        {nurseData.faqs.map((q,i)=><details key={i} className="rounded-xl border border-black/5 bg-neutral-100 p-4"><summary className="font-medium text-neutral-900">{q}</summary><p className="mt-2 text-sm text-neutral-600">Contact 1800 000 0000 for details.</p></details>)}
       </div>
     </Section>
     <FinalCTA title="Discuss care options for your loved one" description="Share your requirements and our care team can guide you to the right solution." href="/care-services/long-term-care/" label="Speak with a Care Expert" />

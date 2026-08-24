@@ -17,7 +17,7 @@ export default function CareServicesIndex() {
       <Section eyebrow="Home Visit" title="Professional Healthcare at Your Doorstep" lead="Doctors, physiotherapists, and post-surgical support at home." tone="white">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Link href="/care-services/home-visit/doctor-at-home/" className="rounded-2xl border border-black/5 bg-white p-6 hover:border-primary/30"><div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary"><UserRound size={20} /></div><h3 className="mt-4 font-semibold">Doctor at Home</h3><p className="mt-2 text-sm text-neutral-600">Expert medical care at your doorstep — tele/visit at ₹1,000.</p></Link>
-          <Link href="/care-services/home-visit/physiotherapy-at-home/" className="rounded-2xl border border-black/5 bg-white p-6 hover:border-primary/30"><div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary"><Activity size={20} /></div><h3 className="mt-4 font-semibold">Physiotherapy at Home</h3><p className="mt-2 text-sm text-neutral-600">Mobility and rehabilitation by Apollo physiotherapists.</p></Link>
+          <Link href="/care-services/home-visit/physiotherapy-at-home/" className="rounded-2xl border border-black/5 bg-white p-6 hover:border-primary/30"><div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary"><Activity size={20} /></div><h3 className="mt-4 font-semibold">Physiotherapy at Home</h3><p className="mt-2 text-sm text-neutral-600">Mobility and rehabilitation by Svasth physiotherapists.</p></Link>
           <Link href="/care-services/home-visit/post-surgical-care/" className="rounded-2xl border border-black/5 bg-white p-6 hover:border-primary/30"><div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary"><ShieldCheck size={20} /></div><h3 className="mt-4 font-semibold">Post-Surgical Care</h3><p className="mt-2 text-sm text-neutral-600">Structured recovery support after surgery.</p></Link>
         </div>
       </Section>
@@ -36,7 +36,7 @@ export default function CareServicesIndex() {
           <Link href="/care-services/pricing-plans-comparison/" className="rounded-2xl border border-black/5 bg-neutral-100 p-6 hover:border-primary/30"><h3 className="font-semibold">Pricing & Plans</h3><p className="mt-2 text-sm text-neutral-600">Compare Basic, Advanced, Premium and procedure pricing.</p></Link>
         </div>
       </Section>
-      <FinalCTA title="Ready to bring care home?" description="Book now or call 1800 108 8586 — hospital-grade care delivered by trusted professionals." href="/care-services/long-term-care/" label="Explore Services" />
+      <FinalCTA title="Ready to bring care home?" description="Book now or call 1800 000 0000 — hospital-grade care delivered by trusted professionals." href="/care-services/long-term-care/" label="Explore Services" />
     </PageShell>
   );
 }

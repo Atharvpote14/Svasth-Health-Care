@@ -34,7 +34,7 @@ function IVInfusionAtHomePage() {
   return <PageShell breadcrumbs={[{ label: "Procedures" }, { label: "IV Infusion at Home" }]}>
     <Hero eyebrow="Procedures" title={pageData.title} description={pageData.description} icon={pageData.icon} primary={["Enquire Now", "/care-services/iv-infusion-at-home/"]} />
     <Section id="overview" eyebrow="Procedure Details" title="IV Infusion at Home" lead={pageData.overview} tone={pageData.bg}>
-      <FeatureGrid items={[{ icon: ShieldCheck, title: "Pre-Inserted Cannula", description: "No needle reinsertion — minimises discomfort." }, { icon: MapPin, title: "At Your Doorstep", description: "Receive the procedure in the comfort of your home." }, { icon: HeartHandshake, title: "Trained Nurses", description: "Administered by Apollo's trained nursing staff." }, { icon: Clock3, title: "Quick Procedure", description: "Speedier than fresh cannulation." }]} />
+      <FeatureGrid items={[{ icon: ShieldCheck, title: "Pre-Inserted Cannula", description: "No needle reinsertion — minimises discomfort." }, { icon: MapPin, title: "At Your Doorstep", description: "Receive the procedure in the comfort of your home." }, { icon: HeartHandshake, title: "Trained Nurses", description: "Administered by Svasth's trained nursing staff." }, { icon: Clock3, title: "Quick Procedure", description: "Speedier than fresh cannulation." }]} />
     </Section>
     <Section id="who-for" eyebrow="Who Is This For" title="Suitable for" tone={pageData.bg}>
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4">

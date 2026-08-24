@@ -11,7 +11,7 @@ const pageData = {
     "What is tracheostomy care?",
     "How is quality of care ensured?",
   ],
-  overview: "Tracheostomy care at home is provided by Apollo's trained nurses as part of skilled long-term care, supporting patients with airway management needs and training families on safe daily care.",
+  overview: "Tracheostomy care at home is provided by Svasth's trained nurses as part of skilled long-term care, supporting patients with airway management needs and training families on safe daily care.",
   whoItsFor: [
     "Patients with tracheostomy or ventilator-related care needs",
     "Families needing daily care guidance for a tracheostomy patient",
@@ -24,7 +24,7 @@ const pageData = {
   ],
   howItWorks: [
     "Enquire about tracheostomy care",
-    "Apollo assesses the patient's needs",
+    "Svasth assesses the patient's needs",
     "A trained nurse provides care at home",
     "Family is trained for daily management",
   ],

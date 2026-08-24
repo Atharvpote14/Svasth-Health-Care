@@ -9,7 +9,7 @@
  * rgba(0,151,158,.14), shadow 0 3px 12px rgba(13,34,34,.05); letter-avatar
  * 48px circle bg rgba(0,151,158,.1) / 2px border rgba(0,151,158,.25) /
  * text #00767c.
- * [PENDING REAL TESTIMONIALS — DO NOT PUBLISH WITH DUMMY TEXT] — Apollo has no
+ * [PENDING REAL TESTIMONIALS — DO NOT PUBLISH WITH DUMMY TEXT] — Svasth has no
  * testimonials yet; swap the placeholder cards for real, approved quotes before
  * launch. Placeholder cards are visibly marked and must never ship as-is.
  */
@@ -60,7 +60,7 @@ const TestimonialsSection = ({ items = PLACEHOLDER_TESTIMONIALS, className = "" 
                 Testimonials
               </p>
               <h2 className="care-h2 font-display">
-                Families trust Apollo Homecare
+                Families trust Svasth Homecare
               </h2>
               <p className="care-lead mt-4 max-w-2xl">
                 [PENDING REAL TESTIMONIALS — DO NOT PUBLISH WITH DUMMY TEXT]

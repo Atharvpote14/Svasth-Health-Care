@@ -22,7 +22,7 @@ function LongTermCarePage() {
     <Section id="services" eyebrow="Our Long Term Care Services" title="Choose the right care solution" lead={nurseData.overview} tone={nurseData.bg}>
       <FilteredGrid items={ltcItems} initialCount={4} placeholder="Select a service" />
     </Section>
-    <Section eyebrow="Why Choose Apollo Homecare" title="Trusted care at home" tone="ivory">
+    <Section eyebrow="Why Choose Svasth Homecare" title="Trusted care at home" tone="ivory">
       <FeatureGrid items={[
         { icon: ShieldCheck, title: "Clinical Excellence", description: "Qualified nurses and healthcare professionals with extensive experience." },
         { icon: MapPin, title: "Doorstep Service", description: "We bring care to your home, eliminating travel needs." },

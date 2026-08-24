@@ -1,7 +1,7 @@
 export const PAGE_DATA = {
   longTermCareNurse: {
     title: "Nurse at Home",
-    tagline: "Apollo nurse at home — skilled nursing care for post-operative recovery, chronic conditions, and daily medical support at home.",
+    tagline: "Svasth nurse at home — skilled nursing care for post-operative recovery, chronic conditions, and daily medical support at home.",
     description: "Skilled nursing care for post-operative recovery, chronic conditions, and daily medical support at home.",
     icon: "stethoscope",
     bg: "ivory",
@@ -11,7 +11,7 @@ export const PAGE_DATA = {
       "Why get nursing procedures done at home?",
       "Are consumables charged separately?",
     ],
-    overview: "Apollo serves as a bridge between professional medical care and the comfort of one's home, ensuring that patients receive compassionate, personalised, and reliable care tailored to their needs.",
+    overview: "Svasth serves as a bridge between professional medical care and the comfort of one's home, ensuring that patients receive compassionate, personalised, and reliable care tailored to their needs.",
     whoItsFor: [
       "Patients recovering from surgery or illness",
       "Chronic conditions that require ongoing care",
@@ -27,9 +27,9 @@ export const PAGE_DATA = {
       "Medication administration and monitoring",
     ],
     howItWorks: [
-      "Contact Apollo Homecare via phone, email, or website",
+      "Contact Svasth Homecare via phone, email, or website",
       "Share the patient's condition and needs",
-      "Apollo matches a trained, verified nurse",
+      "Svasth matches a trained, verified nurse",
       "Care begins at home on the agreed schedule",
     ],
     related: ["attendant-at-home", "icu-at-home", "elder-care", "ryles-tube-insertion", "foley-catheter-care", "iv-infusion-at-home", "wound-dressing-at-home"],
@@ -62,7 +62,7 @@ export const PAGE_DATA = {
       "Unlike nurses, trained attendants do not perform medical procedures",
     ],
     howItWorks: [
-      "Get in touch with Apollo Homecare by visiting a nearest Apollo hospital, their customer service hotline, or the website",
+      "Get in touch with Svasth Homecare by visiting a nearest Svasth hospital, their customer service hotline, or the website",
       "Based on needs and the patient's condition, the team suggests a qualified caregiver",
       "A consultation with medical specialists may be scheduled to ascertain the degree of care required",
       "The patient is allocated to the trained attendant, who starts helping at home",
@@ -104,7 +104,7 @@ export const PAGE_DATA = {
     ],
     howItWorks: [
       "Enquire about ICU at Home",
-      "Apollo discusses the patient's condition and requirements",
+      "Svasth discusses the patient's condition and requirements",
       "A customised care plan and equipment setup are arranged",
       "The care team begins round-the-clock care at home",
     ],
@@ -123,7 +123,7 @@ export const PAGE_DATA = {
       "Can the checkup be done at home?",
       "Which package should I choose?",
     ],
-    overview: "Apollo Elder Care Subscription is a customised healthcare and support plan specially designed for elderly individuals to ensure their well-being and comfort at home. It provides continuous professional care, personalised attention, and essential services on a subscription basis.",
+    overview: "Svasth Elder Care Subscription is a customised healthcare and support plan specially designed for elderly individuals to ensure their well-being and comfort at home. It provides continuous professional care, personalised attention, and essential services on a subscription basis.",
     whoItsFor: [
       "Elderly individuals living alone who need assistance with daily tasks",
       "Seniors recovering from surgery or illness who require post-hospital care",
@@ -149,7 +149,7 @@ export const PAGE_DATA = {
   },
   homeVisitDoctor: {
     title: "Doctor at Home",
-    tagline: "Apollo Doctor at Home — expert medical care at your doorstep, ensuring convenience, comfort, and peace of mind.",
+    tagline: "Svasth Doctor at Home — expert medical care at your doorstep, ensuring convenience, comfort, and peace of mind.",
     description: "Expert medical care at your doorstep, ensuring convenience, comfort, and peace of mind.",
     icon: "user-round",
     bg: "ivory",
@@ -159,7 +159,7 @@ export const PAGE_DATA = {
       "Why get nursing procedures done at home?",
       "Are consumables charged separately?",
     ],
-    overview: "Apollo Home Care's Doctor at Home Service brings expert medical care to your doorstep. Our skilled doctors provide routine checkups, acute care, post-operative support, elderly care, and palliative care — tailored to your unique needs.",
+    overview: "Svasth Home Care's Doctor at Home Service brings expert medical care to your doorstep. Our skilled doctors provide routine checkups, acute care, post-operative support, elderly care, and palliative care — tailored to your unique needs.",
     whoItsFor: [
       "Patients with mobility challenges who find travel difficult",
       "People with chronic conditions needing timely attention",
@@ -171,7 +171,7 @@ export const PAGE_DATA = {
       "Specialised Doctor at Home — targeted expertise for complicated medical issues",
     ],
     howItWorks: [
-      "Book your Apollo Doctor at home appointment",
+      "Book your Svasth Doctor at home appointment",
       "Choose tele consultation or a home visit",
       "A doctor provides care at the scheduled time",
       "Prescription and follow-up support follow",
@@ -180,8 +180,8 @@ export const PAGE_DATA = {
   },
   homeVisitPhysio: {
     title: "Physiotherapy at Home",
-    tagline: "Apollo physiotherapists deliver expert care at home to enhance mobility and improve quality of life.",
-    description: "Apollo physiotherapists deliver expert care at home to enhance mobility and improve quality of life.",
+    tagline: "Svasth physiotherapists deliver expert care at home to enhance mobility and improve quality of life.",
+    description: "Svasth physiotherapists deliver expert care at home to enhance mobility and improve quality of life.",
     icon: "activity",
     bg: "ivory",
     priceFrom: "Pack options: 7, 14, and 30 days",
@@ -190,7 +190,7 @@ export const PAGE_DATA = {
       "Why get nursing procedures done at home?",
       "Are consumables charged separately?",
     ],
-    overview: "Our Apollo physiotherapists deliver expert care at home to enhance mobility and improve quality of life. Collaborating with your doctor and Homecare nurses, they address challenges from illness, injury, disability, or aging — all in the comfort and safety of your home.",
+    overview: "Our Svasth physiotherapists deliver expert care at home to enhance mobility and improve quality of life. Collaborating with your doctor and Homecare nurses, they address challenges from illness, injury, disability, or aging — all in the comfort and safety of your home.",
     whoItsFor: [
       "Recovery from injuries, surgeries, or chronic conditions",
       "Mobility and balance concerns",
@@ -227,7 +227,7 @@ export const PAGE_DATA = {
       "Why get nursing procedures done at home?",
       "Are consumables charged separately?",
     ],
-    overview: "Post-surgical care at home helps patients recovering from surgery, injury, or illness receive skilled care without hospital stays. Apollo nurses assist with wound care, medication, and daily recovery needs, enabling quicker recovery in familiar surroundings.",
+    overview: "Post-surgical care at home helps patients recovering from surgery, injury, or illness receive skilled care without hospital stays. Svasth nurses assist with wound care, medication, and daily recovery needs, enabling quicker recovery in familiar surroundings.",
     whoItsFor: [
       "Patients recovering from surgery who require skilled care at home",
       "Recovery after hospitalisation, including post-operative wound care",
@@ -242,7 +242,7 @@ export const PAGE_DATA = {
     ],
     howItWorks: [
       "Enquire about post-surgical care",
-      "Apollo assesses the recovery needs",
+      "Svasth assesses the recovery needs",
       "A care plan with nursing visits begins at home",
       "Recovery progress is monitored and adjusted",
     ],
@@ -266,7 +266,7 @@ export const PAGE_DATA = {
       "Bedridden or elderly patients who would otherwise require hospital visits",
     ],
     whatsIncluded: [
-      "Safe, precise tube insertion by Apollo's trained nurses with minimal discomfort",
+      "Safe, precise tube insertion by Svasth's trained nurses with minimal discomfort",
       "Strict sterilisation protocols to prevent infections",
       "Guidance on appropriate feeding schedules and nutrition plans",
       "Regular checks to ensure the tube remains functional",
@@ -386,7 +386,7 @@ export const PAGE_DATA = {
       "What is tracheostomy care?",
       "How is quality of care ensured?",
     ],
-    overview: "Tracheostomy care at home is provided by Apollo's trained nurses as part of skilled long-term care, supporting patients with airway management needs and training families on safe daily care.",
+    overview: "Tracheostomy care at home is provided by Svasth's trained nurses as part of skilled long-term care, supporting patients with airway management needs and training families on safe daily care.",
     whoItsFor: [
       "Patients with tracheostomy or ventilator-related care needs",
       "Families needing daily care guidance for a tracheostomy patient",
@@ -399,7 +399,7 @@ export const PAGE_DATA = {
     ],
     howItWorks: [
       "Enquire about tracheostomy care",
-      "Apollo assesses the patient's needs",
+      "Svasth assesses the patient's needs",
       "A trained nurse provides care at home",
       "Family is trained for daily management",
     ],

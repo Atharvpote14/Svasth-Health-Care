@@ -7,9 +7,9 @@ import { Award, BadgeCheck, Star, Users } from "lucide-react";
  * │ [CONFIRM WITH CLIENT] — every figure below is unverified.                 │
  * │                                                                           │
  * │ These four values were carried into this repo from a competitor's          │
- * │ marketing site, not from Apollo. "1 Mn+ patients a year", "2 K+ verified   │
+ * │ marketing site, not from Svasth. "1 Mn+ patients a year", "2 K+ verified   │
  * │ caregivers", the QAI accreditation and the 4.9 Google rating are therefore │
- * │ claims about Apollo that nothing in this project substantiates, sitting in │
+ * │ claims about Svasth that nothing in this project substantiates, sitting in │
  * │ the most trust-bearing band on the home page. Replace each one with a      │
  * │ figure the client will stand behind, or delete the entry — an honest three │
  * │ measures beat four with one invented.                                      │

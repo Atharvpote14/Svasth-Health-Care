@@ -49,16 +49,16 @@ export function SiteHeader() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 text-xs text-neutral-600 md:px-6">
           <div className="flex items-center gap-2"><MapPin size={14} className="text-primary" /> Select City</div>
           <div className="hidden items-center gap-5 sm:flex">
-            <a href="tel:18001088586" className="font-semibold text-primary">1800 108 8586</a>
+            <a href="tel:18000000000" className="font-semibold text-primary">1800 000 0000</a>
             <span className="flex items-center gap-1"><ShoppingCart size={14} /> Cart</span>
             <span className="flex items-center gap-1"><UserRound size={14} /> Login</span>
           </div>
         </div>
       </div>
       <div className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-3" aria-label="Apollo Homecare home">
+        <Link href="/" className="flex items-center gap-3" aria-label="Svasth Homecare home">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white"><Stethoscope size={21} /></div>
-          <div><div className="font-display text-xl font-semibold leading-none text-neutral-900">Apollo</div><div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-primary">Homecare</div></div>
+          <div><div className="font-display text-xl font-semibold leading-none text-neutral-900">Svasth</div><div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-primary">Homecare</div></div>
         </Link>
         <nav className="hidden lg:block" aria-label="Main navigation">
           <ul className="flex items-center gap-6">
@@ -67,7 +67,7 @@ export function SiteHeader() {
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
           <Link href="/care-services/" className="btn btn-secondary h-10 px-4 text-sm">Book a service</Link>
-          <a href="tel:18001088586" className="btn btn-primary h-10 px-4 text-sm"><Phone size={15} /> Call Now</a>
+          <a href="tel:18000000000" className="btn btn-primary h-10 px-4 text-sm"><Phone size={15} /> Call Now</a>
         </div>
         <button type="button" className="rounded-lg p-2 lg:hidden" onClick={() => setMobileOpen((v) => !v)} aria-label="Toggle navigation">
           {mobileOpen ? <X /> : <Menu />}
@@ -81,11 +81,11 @@ export function SiteHeader() {
 export function Footer() {
   return <footer className="footer">
     <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 md:grid-cols-2 lg:grid-cols-4">
-      <div><div className="mb-4 flex items-center gap-3"><div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-primary"><Stethoscope size={21} /></div><div><div className="font-display text-lg font-semibold">Apollo</div><div className="text-[10px] uppercase tracking-[0.14em] text-white/60">Homecare</div></div></div><p className="max-w-xs text-sm leading-6 text-white/70">World-class healthcare services delivered to your home with professional medical expertise and personalised care.</p></div>
+      <div><div className="mb-4 flex items-center gap-3"><div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-primary"><Stethoscope size={21} /></div><div><div className="font-display text-lg font-semibold">Svasth</div><div className="text-[10px] uppercase tracking-[0.14em] text-white/60">Homecare</div></div></div><p className="max-w-xs text-sm leading-6 text-white/70">World-class healthcare services delivered to your home with professional medical expertise and personalised care.</p></div>
       <FooterColumn title="Our Services" links={NAV.slice(1)} />
-      <div><h3 className="mb-4 font-display text-base text-white">Contact Us</h3><div className="space-y-2 text-sm text-white/75">{CITIES.map((city) => <div key={city}>{city}</div>)}</div><a href="tel:18001088586" className="mt-5 inline-flex items-center gap-2 font-semibold text-white"><Phone size={16} className="text-[#8fe0e3]" />1800 108 8586</a></div>
+      <div><h3 className="mb-4 font-display text-base text-white">Contact Us</h3><div className="space-y-2 text-sm text-white/75">{CITIES.map((city) => <div key={city}>{city}</div>)}</div><a href="tel:18000000000" className="mt-5 inline-flex items-center gap-2 font-semibold text-white"><Phone size={16} className="text-[#8fe0e3]" />1800 000 0000</a></div>
     </div>
-    <div className="border-t border-white/10 py-5 text-center text-sm text-white/60">© {new Date().getFullYear()} Apollo Homecare. All rights reserved.</div>
+    <div className="border-t border-white/10 py-5 text-center text-sm text-white/60">© {new Date().getFullYear()} Svasth Homecare. All rights reserved.</div>
   </footer>;
 }
 
@@ -124,7 +124,7 @@ export function Steps({ items }) { return <section className="band-dark-dotted p
 
 export function FAQ({ items }) { return <Section eyebrow="FAQs" title="Frequently asked questions"><div className="mx-auto max-w-4xl space-y-3">{items.map((item, i) => <details key={item.q} className="group rounded-2xl border border-primary/15 bg-white"><summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-5 font-semibold text-neutral-900"><span>{item.q}</span><ChevronDown size={18} className="shrink-0 text-primary transition group-open:rotate-180" /></summary><p className="px-5 pb-5 text-sm leading-7 text-neutral-600">{item.a}</p></details>)}</div></Section>; }
 
-export function FinalCTA({ title, description, href = "/care-services/", label = "Enquire Now" }) { return <section className="band-dark-dotted-strong py-14 md:py-20"><div className="mx-auto max-w-3xl px-6 text-center"><h2 className="font-display text-[30px] font-semibold text-white md:text-[40px]">{title}</h2><p className="mt-4 text-white/75">{description}</p><div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"><Link href={href} className="btn btn-primary h-12 px-8">{label} <ArrowRight size={17} /></Link><a href="tel:18001088586" className="flex h-12 items-center gap-2 px-5 font-semibold text-white"><Phone size={17} className="text-[#8fe0e3]" />1800 108 8586</a></div></div></section>; }
+export function FinalCTA({ title, description, href = "/care-services/", label = "Enquire Now" }) { return <section className="band-dark-dotted-strong py-14 md:py-20"><div className="mx-auto max-w-3xl px-6 text-center"><h2 className="font-display text-[30px] font-semibold text-white md:text-[40px]">{title}</h2><p className="mt-4 text-white/75">{description}</p><div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"><Link href={href} className="btn btn-primary h-12 px-8">{label} <ArrowRight size={17} /></Link><a href="tel:18000000000" className="flex h-12 items-center gap-2 px-5 font-semibold text-white"><Phone size={17} className="text-[#8fe0e3]" />1800 000 0000</a></div></div></section>; }
 
 export { CITIES };
 

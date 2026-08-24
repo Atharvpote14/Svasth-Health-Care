@@ -17,7 +17,7 @@ const pageData = {
     "Bedridden or elderly patients who would otherwise require hospital visits",
   ],
   whatsIncluded: [
-    "Safe, precise tube insertion by Apollo's trained nurses with minimal discomfort",
+    "Safe, precise tube insertion by Svasth's trained nurses with minimal discomfort",
     "Strict sterilisation protocols to prevent infections",
     "Guidance on appropriate feeding schedules and nutrition plans",
     "Regular checks to ensure the tube remains functional",
@@ -35,7 +35,7 @@ function RylesTubeInsertionPage() {
   return <PageShell breadcrumbs={[{ label: "Procedures" }, { label: "Ryle's Tube Insertion" }]}>
     <Hero eyebrow="Procedures" title={pageData.title} description={pageData.description} icon={pageData.icon} primary={["Enquire Now", "/care-services/ryles-tube-insertion/"]} />
     <Section id="overview" eyebrow="Procedure Details" title="Ryle's Tube Insertion" lead={pageData.overview} tone={pageData.bg}>
-      <FeatureGrid items={[{ icon: ShieldCheck, title: "Sterile Procedure", description: "Strict sterilisation protocols to prevent infections." }, { icon: MapPin, title: "At Your Doorstep", description: "Receive the procedure in the comfort of your home." }, { icon: HeartHandshake, title: "Trained Nurses", description: "Performed by Apollo's trained nursing staff." }, { icon: Clock3, title: "Minimal Discomfort", description: "Precise tube insertion with minimal patient discomfort." }]} />
+      <FeatureGrid items={[{ icon: ShieldCheck, title: "Sterile Procedure", description: "Strict sterilisation protocols to prevent infections." }, { icon: MapPin, title: "At Your Doorstep", description: "Receive the procedure in the comfort of your home." }, { icon: HeartHandshake, title: "Trained Nurses", description: "Performed by Svasth's trained nursing staff." }, { icon: Clock3, title: "Minimal Discomfort", description: "Precise tube insertion with minimal patient discomfort." }]} />
     </Section>
     <Section id="who-for" eyebrow="Who Is This For" title="Suitable for" tone={pageData.bg}>
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4">

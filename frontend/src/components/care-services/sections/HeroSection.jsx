@@ -33,7 +33,7 @@ import ServiceSelector from "./ServiceSelector";
 
 const HeroSection = ({
   eyebrow = "Home healthcare",
-  title = "Apollo Homecare Services",
+  title = "Svasth Homecare Services",
   tagline,
   selectorGroups = [],
   trustItems = [],

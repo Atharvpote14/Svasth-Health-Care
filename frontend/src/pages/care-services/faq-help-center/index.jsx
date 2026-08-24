@@ -4,7 +4,7 @@ import { ShieldCheck, ChevronDown } from "lucide-react";
 const faqs = [
   {
     q: "Can nursing procedures be done at home?",
-    a: "Yes. Apollo Homecare lists nursing procedures such as Ryle's tube insertion, Foley catheter care, IV infusion, and wound dressing designed for home-based service by trained nurses.",
+    a: "Yes. Svasth Homecare lists nursing procedures such as Ryle's tube insertion, Foley catheter care, IV infusion, and wound dressing designed for home-based service by trained nurses.",
   },
   {
     q: "Which procedures are available at home?",
@@ -24,11 +24,11 @@ const faqs = [
   },
   {
     q: "How are professionals verified?",
-    a: "Yes. Apollo ensures that all attendants and nurses are well-trained, background-verified, and experienced in handling patients with various medical needs.",
+    a: "Yes. Svasth ensures that all attendants and nurses are well-trained, background-verified, and experienced in handling patients with various medical needs.",
   },
   {
     q: "How is the quality of care ensured?",
-    a: "Apollo follows strict quality control measures, professional clinical care, and sterilisation and safety protocols across all services.",
+    a: "Svasth follows strict quality control measures, professional clinical care, and sterilisation and safety protocols across all services.",
   },
   {
     q: "Are consumables charged separately?",
@@ -51,7 +51,7 @@ function FAQHelpCenterPage() {
     </Section>
     <Section eyebrow="Coordinate with Us" title="Get city-specific information" tone="ivory">
       <div className="mx-auto max-w-xl px-6">
-        <p className="mb-4 text-neutral-600">Apollo Homecare services are available in the following cities. Please coordinate with our team for city-specific service availability and scheduling:</p>
+        <p className="mb-4 text-neutral-600">Svasth Homecare services are available in the following cities. Please coordinate with our team for city-specific service availability and scheduling:</p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-4">
           {["Hyderabad", "Kolkata", "Delhi NCR", "Chennai", "Bangalore", "Pune"].map((city) => (
             <div key={city} className="rounded-2xl border border-primary/10 bg-white p-4 text-center">

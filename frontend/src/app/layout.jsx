@@ -46,12 +46,12 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata = {
   title: {
-    default: "Apollo Homecare | Expert Healthcare at Home",
-    template: "%s | Apollo Homecare",
+    default: "Svasth Homecare | Expert Healthcare at Home",
+    template: "%s | Svasth Homecare",
   },
   description:
     "Professional healthcare services delivered at home by trained professionals — long term care, home visits, and nursing procedures.",
-  metadataBase: new URL("https://www.apollohomecare.com"),
+  metadataBase: new URL("https://www.svasthhomecare.com"),
 };
 
 export default function RootLayout({ children }) {

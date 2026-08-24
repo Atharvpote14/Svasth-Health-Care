@@ -36,7 +36,7 @@ function PostSurgicalCarePage() {
     </Section>
     <Section eyebrow="FAQs" title="Common questions" tone="white">
       <div className="grid gap-3 max-w-3xl">
-        {pscData.faqs.map((q,i)=><details key={i} className="rounded-xl border border-black/5 bg-neutral-100 p-4"><summary className="font-medium text-neutral-900">{q}</summary><p className="mt-2 text-sm text-neutral-600">Contact 1800 108 8586 for details.</p></details>)}
+        {pscData.faqs.map((q,i)=><details key={i} className="rounded-xl border border-black/5 bg-neutral-100 p-4"><summary className="font-medium text-neutral-900">{q}</summary><p className="mt-2 text-sm text-neutral-600">Contact 1800 000 0000 for details.</p></details>)}
       </div>
     </Section>
     <FinalCTA title="Arrange post-surgical care at home" description="Enquire about nursing visits and recovery support for your loved one." href="/care-services/home-visit/" label="Enquire Now" />

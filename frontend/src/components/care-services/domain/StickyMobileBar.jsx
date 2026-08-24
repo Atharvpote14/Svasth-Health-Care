@@ -22,30 +22,42 @@ const StickyMobileBar = ({
   className = "",
 }) => {
   return (
-    <div
-      className={`care-dock fixed inset-x-0 bottom-0 z-30 flex items-center gap-3 border-t border-[var(--care-rule-strong)] bg-white/95 px-4 pt-3 backdrop-blur md:hidden ${className}`}
-    >
-      <a
-        href={callHref}
-        className="btn btn-primary h-12 flex-1 text-[14px]"
+    <>
+      {/* Flow spacer. The dock is position:fixed, so on mobile it would sit on
+         top of the footer. StickyMobileBar is the last element before the
+         footer on every page that renders it, so this reserves matching space
+         in normal flow — including the iOS home-indicator inset — pushing the
+         footer clear of the dock. Collapses once the dock is hidden (md+). */}
+      <div
+        aria-hidden="true"
+        className="md:hidden"
+        style={{ height: "calc(4.5rem + env(safe-area-inset-bottom))" }}
+      />
+      <div
+        className={`care-dock fixed inset-x-0 bottom-0 z-30 flex items-center gap-3 border-t border-[var(--care-rule-strong)] bg-white/95 px-4 pt-3 backdrop-blur md:hidden ${className}`}
       >
-        <Phone size={16} strokeWidth={2} aria-hidden="true" />
-        {callLabel}
-      </a>
+        <a
+          href={callHref}
+          className="btn btn-primary h-12 flex-1 text-[14px]"
+        >
+          <Phone size={16} strokeWidth={2} aria-hidden="true" />
+          {callLabel}
+        </a>
 
-      <Link
-        href={bookHref}
-        className="group flex shrink-0 items-center gap-1.5 px-2 care-label text-primary"
-      >
-        {bookLabel}
-        <ArrowRight
-          size={13}
-          strokeWidth={2}
-          aria-hidden="true"
-          className="transition-transform duration-250 ease-standard group-hover:translate-x-1"
-        />
-      </Link>
-    </div>
+        <Link
+          href={bookHref}
+          className="group flex shrink-0 items-center gap-1.5 px-2 care-label text-primary"
+        >
+          {bookLabel}
+          <ArrowRight
+            size={13}
+            strokeWidth={2}
+            aria-hidden="true"
+            className="transition-transform duration-250 ease-standard group-hover:translate-x-1"
+          />
+        </Link>
+      </div>
+    </>
   );
 };
 

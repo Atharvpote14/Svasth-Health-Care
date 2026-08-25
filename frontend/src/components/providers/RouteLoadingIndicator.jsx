@@ -1,15 +1,15 @@
 /**
  * RouteLoadingIndicator - Shows loading state during route transitions
- * Next.js 14 App Router compatible
+ * Next.js 14 App Router compatible - wrapped in Suspense boundary
  */
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import PageLoader from "../loaders/PageLoader";
 
-export default function RouteLoadingIndicator() {
+function RouteLoadingIndicatorInner() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
@@ -32,4 +32,12 @@ export default function RouteLoadingIndicator() {
   if (!isLoading) return null;
 
   return <PageLoader />;
+}
+
+export default function RouteLoadingIndicator() {
+  return (
+    <Suspense fallback={null}>
+      <RouteLoadingIndicatorInner />
+    </Suspense>
+  );
 }

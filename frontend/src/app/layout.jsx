@@ -2,6 +2,8 @@ import { Fraunces, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { FOOTER_COLUMNS, FOOTER_COPYRIGHT, NAV_LINKS, SITE_NAME } from "../lib/site";
+import LoadingProvider from "../components/providers/LoadingProvider";
+import RouteLoadingIndicator from "../components/providers/RouteLoadingIndicator";
 import "./globals.css";
 
 /**
@@ -64,28 +66,32 @@ export default function RootLayout({ children }) {
       <body
         className={`${fraunces.variable} ${plexSans.variable} ${plexMono.variable} care-theme`}
       >
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-white"
-        >
-          Skip to main content
-        </a>
+        <LoadingProvider>
+          <RouteLoadingIndicator />
 
-        <header className="header care-header">
-          <div className="header-container">
-            <a
-              href="/"
-              className="header-logo care-wordmark font-display text-xl text-neutral-900"
-            >
-              {SITE_NAME}
-            </a>
-            <Navbar items={NAV_LINKS} />
-          </div>
-        </header>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-white"
+          >
+            Skip to main content
+          </a>
 
-        <main id="main-content">{children}</main>
+          <header className="header care-header">
+            <div className="header-container">
+              <a
+                href="/"
+                className="header-logo care-wordmark font-display text-xl text-neutral-900"
+              >
+                {SITE_NAME}
+              </a>
+              <Navbar items={NAV_LINKS} />
+            </div>
+          </header>
 
-        <Footer columns={FOOTER_COLUMNS} copyright={FOOTER_COPYRIGHT} />
+          <main id="main-content">{children}</main>
+
+          <Footer columns={FOOTER_COLUMNS} copyright={FOOTER_COPYRIGHT} />
+        </LoadingProvider>
       </body>
     </html>
   );

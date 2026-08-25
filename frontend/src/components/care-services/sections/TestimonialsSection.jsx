@@ -9,7 +9,7 @@
  * rgba(0,151,158,.14), shadow 0 3px 12px rgba(13,34,34,.05); letter-avatar
  * 48px circle bg rgba(0,151,158,.1) / 2px border rgba(0,151,158,.25) /
  * text #00767c.
- * [PENDING REAL TESTIMONIALS — DO NOT PUBLISH WITH DUMMY TEXT] — Apollo has no
+ * [PENDING REAL TESTIMONIALS — DO NOT PUBLISH WITH DUMMY TEXT] — Svasth has no
  * testimonials yet; swap the placeholder cards for real, approved quotes before
  * launch. Placeholder cards are visibly marked and must never ship as-is.
  */
@@ -51,18 +51,18 @@ const TestimonialsSection = ({ items = PLACEHOLDER_TESTIMONIALS, className = "" 
   };
 
   return (
-    <section className={`bg-white py-10 md:py-[70px] ${className}`}>
+    <section className={`bg-white py-14 md:py-[88px] ${className}`}>
       <Reveal>
         <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <div className="mb-11 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+              <p className="care-eyebrow mb-4">
                 Testimonials
               </p>
-              <h2 className="font-display text-[24px] font-semibold leading-[1.3] text-neutral-900 md:text-[36px]">
-                Families trust Apollo Homecare
+              <h2 className="care-h2 font-display">
+                Families trust Svasth Homecare
               </h2>
-              <p className="mt-3 max-w-2xl text-lg leading-[1.6] text-neutral-600">
+              <p className="care-lead mt-4 max-w-2xl">
                 [PENDING REAL TESTIMONIALS — DO NOT PUBLISH WITH DUMMY TEXT]
               </p>
             </div>

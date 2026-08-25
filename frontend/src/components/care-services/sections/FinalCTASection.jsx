@@ -1,56 +1,69 @@
-/**
- * FinalCTASection — closing banner before the footer.
- * Portea closing-cta: dark dotted gradient
- * radial-gradient(rgba(143,224,227,.12) 1.5px,transparent 1.6px) 22px +
- * linear-gradient(120deg,#0d2222,#114143); centered; orange Book Now
- * (height 60px, radius 999px) + white call link with #8fe0e3 phone icon.
- */
-
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import Reveal from "../../Reveal";
 import { PHONE_HREF, PHONE_NUMBER } from "../../../lib/site";
 
-const FinalCTASection = ({
-  title,
-  lead,
-  cta,
-  note,
-  className = "",
-}) => {
+/**
+ * FinalCTASection — the closing bookend.
+ *
+ * The same lit ground and arch as CategoryHero, so the page opens and closes on
+ * the same threshold. Previously this was centred, which read as a generic
+ * closing banner unrelated to anything above it.
+ *
+ * The phone number is set at display size in the body face rather than in mono.
+ * It is the last thing on the page and the one the whole page is arguing for, so
+ * it is sized like an invitation rather than tucked into a data style.
+ */
+
+const FinalCTASection = ({ title, lead, cta, note, className = "" }) => {
   return (
     <section
-      className={`band-dark-dotted-strong py-10 md:py-[70px] ${className}`}
+      className={`care-sheet care-on-dark relative isolate overflow-hidden ${className}`}
     >
-      <Reveal>
-        <div className="mx-auto flex max-w-3xl flex-col items-center px-6 text-center">
-          <h2 className="font-display text-[26px] font-semibold leading-[1.3] text-white md:text-[40px]">
-            {title}
-          </h2>
+      <span
+        aria-hidden="true"
+        className="care-arch bottom-0 right-[-4rem] hidden h-[20rem] w-[15rem] sm:block md:right-10 md:h-[25rem] md:w-[18.75rem]"
+      />
 
-          {lead && <p className="mt-4 text-base text-white/80">{lead}</p>}
+      <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-24">
+        <Reveal>
+          <div className="max-w-2xl">
+            <h2 className="care-h2 font-display text-white">{title}</h2>
 
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
-            {cta && (
-              <Link
-                href={cta.href}
-                className="btn btn-primary flex h-[60px] w-[184px] items-center justify-center text-lg"
+            {lead && <p className="care-lead mt-5">{lead}</p>}
+
+            <div className="mt-9 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-7">
+              {cta && (
+                <Link
+                  href={cta.href}
+                  className="btn btn-primary h-13 px-7 text-[15px]"
+                >
+                  {cta.label}
+                </Link>
+              )}
+
+              <a
+                href={PHONE_HREF}
+                className="group inline-flex items-center gap-2.5 text-[19px] font-semibold text-white transition-colors duration-250 ease-standard hover:text-[#8fe0e3]"
               >
-                {cta.label}
-              </Link>
-            )}
-            <a
-              href={PHONE_HREF}
-              className="flex items-center gap-2 px-4 py-4 text-base font-semibold text-white transition-colors hover:text-[#8fe0e3]"
-            >
-              <Phone size={18} aria-hidden="true" className="text-[#8fe0e3]" />
-              {PHONE_NUMBER}
-            </a>
-          </div>
+                <Phone
+                  size={17}
+                  strokeWidth={1.75}
+                  aria-hidden="true"
+                  className="text-[#8fe0e3] transition-transform duration-250 ease-standard group-hover:-rotate-12"
+                />
+                {PHONE_NUMBER}
+              </a>
+            </div>
 
-          {note && <p className="mt-6 text-sm text-white/60">{note}</p>}
-        </div>
-      </Reveal>
+            {note && (
+              <p className="care-label mt-9 max-w-md text-[var(--care-mute)]">
+                {note}
+              </p>
+            )}
+          </div>
+        </Reveal>
+      </div>
     </section>
   );
 };

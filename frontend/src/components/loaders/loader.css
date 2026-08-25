@@ -1,0 +1,72 @@
+/**
+ * Loader CSS - Additional animations and styles
+ * These complement the Tailwind utilities defined in tailwind.config.js
+ */
+
+/* Smooth fade-in for loader components */
+.loader-fade-in {
+  animation: loaderFadeIn 200ms ease-out;
+}
+
+@keyframes loaderFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Pulse animation for skeleton screens */
+@keyframes skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.skeleton-pulse {
+  animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Spinner rotation with smooth easing */
+@keyframes smooth-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.smooth-spin {
+  animation: smooth-spin 1s linear infinite;
+}
+
+/* Loading dots animation */
+@keyframes loading-dots {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.loading-dot {
+  animation: loading-dots 1.4s infinite ease-in-out both;
+}
+
+.loading-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+/* Prevent scrolling when full-page loader is active */
+body.loader-active {
+  overflow: hidden;
+}

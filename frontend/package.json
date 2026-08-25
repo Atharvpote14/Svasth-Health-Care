@@ -1,5 +1,5 @@
 {
-  "name": "apollo-homecare-web",
+  "name": "svasth-homecare-web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,7 +12,8 @@
     "lucide-react": "^0.454.0",
     "next": "^14.2.15",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "styled-components": "^6.5.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

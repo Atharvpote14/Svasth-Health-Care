@@ -1,11 +1,15 @@
-/**
- * SafetySection — "Why Choose Us?" trust grid.
- * Portea case-sec pattern: white band, cards white / teal-tinted border,
- * teal eyebrows/icons. Header type scales per Portea h2/eyebrow/lead.
- */
-
 import Reveal from "../../Reveal";
 import SafetyCallout from "../domain/SafetyCallout";
+
+/**
+ * SafetySection — the trust grid.
+ *
+ * Header uses the shared chart type scale. The items are ruled columns rather
+ * than cards (see SafetyCallout), so on desktop their top hairlines join into
+ * one continuous rule across the grid and on mobile they stack into ruled rows.
+ */
+
+const STAGGER_MS = 70;
 
 const SafetySection = ({
   eyebrow = "Safety & trust",
@@ -19,40 +23,37 @@ const SafetySection = ({
 
   return (
     <section
-      className={`py-10 md:py-[70px] ${
-        tone === "off-white" ? "bg-neutral-100" : "bg-white"
+      className={`py-14 md:py-[88px] ${
+        tone === "off-white" ? "care-band" : "bg-white"
       } ${className}`}
     >
-      <Reveal>
-        <div className="mx-auto max-w-6xl px-6">
-          {(eyebrow || title) && (
-            <div className="mb-10">
-              {eyebrow && (
-                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
-                  {eyebrow}
-                </p>
-              )}
-              {title && (
-                <h2 className="font-display text-[24px] font-semibold leading-[1.3] text-neutral-900 md:text-[36px]">
-                  {title}
-                </h2>
-              )}
-              {lead && <p className="mt-3 max-w-2xl text-lg leading-[1.6] text-neutral-600">{lead}</p>}
+      <div className="mx-auto max-w-6xl px-6">
+        {(eyebrow || title) && (
+          <Reveal>
+            <div className="mb-11 max-w-2xl">
+              {eyebrow && <p className="care-eyebrow mb-4">{eyebrow}</p>}
+              {title && <h2 className="care-h2 font-display">{title}</h2>}
+              {lead && <p className="care-lead mt-4">{lead}</p>}
             </div>
-          )}
+          </Reveal>
+        )}
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-            {items.map((item) => (
+        <div className="grid grid-cols-1 gap-x-8 gap-y-9 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map((item, index) => (
+            <Reveal
+              key={item.title}
+              delay={index * STAGGER_MS}
+              className="h-full"
+            >
               <SafetyCallout
-                key={item.title}
                 icon={item.icon}
                 title={item.title}
                 description={item.description}
               />
-            ))}
-          </div>
+            </Reveal>
+          ))}
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 };

@@ -33,17 +33,17 @@ const OFFER_CARDS = [
 
 const OffersSection = ({ className = "" }) => {
   return (
-    <section className={`bg-[#fafafa] py-10 md:py-[70px] ${className}`}>
+    <section className={`bg-[#fafafa] py-14 md:py-[88px] ${className}`}>
       <Reveal>
         <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-10">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+          <div className="mb-11">
+            <p className="care-eyebrow mb-4">
               Offers
             </p>
-            <h2 className="font-display text-[24px] font-semibold leading-[1.3] text-neutral-900 md:text-[36px]">
+            <h2 className="care-h2 font-display">
               Savings on home care
             </h2>
-            <p className="mt-3 max-w-2xl text-lg leading-[1.6] text-neutral-600">
+            <p className="care-lead mt-4 max-w-2xl">
               [PENDING OFFER DATA] — this section is structural; the marketing
               team will supply real promotions before launch.
             </p>

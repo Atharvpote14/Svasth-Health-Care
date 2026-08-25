@@ -1,0 +1,160 @@
+<!--
+  Loading System Demo - Standalone HTML
+  Shows all loading components in action
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Svasth Homecare - Loading System Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./loader.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 p-8">
+  <div class="mx-auto max-w-6xl space-y-12">
+    <header>
+      <h1 class="text-3xl font-bold text-gray-900">Svasth Homecare - Loading System</h1>
+      <p class="mt-2 text-gray-600">All loading states implemented across the site</p>
+    </header>
+
+    <!-- Page Loader Demo -->
+    <section class="space-y-4 rounded-lg border border-gray-200 bg-white p-6">
+      <h2 class="text-xl font-semibold text-gray-900">1. Page Loader (Route Transitions)</h2>
+      <p class="text-sm text-gray-600">Full-page overlay shown during navigation</p>
+      <button
+        onclick="showPageLoader()"
+        class="rounded-md bg-teal-600 px-4 py-2 text-white hover:bg-teal-700"
+      >
+        Show Page Loader
+      </button>
+    </section>
+
+    <!-- Section Loader Demo -->
+    <section class="space-y-4 rounded-lg border border-gray-200 bg-white p-6">
+      <h2 class="text-xl font-semibold text-gray-900">2. Section Loader (Inline Loading)</h2>
+      <p class="text-sm text-gray-600">Used for async content within a page</p>
+      <div class="flex min-h-[200px] items-center justify-center border-2 border-dashed border-gray-300 py-12">
+        <div class="flex flex-col items-center gap-4">
+          <div class="h-12 w-12 animate-spin rounded-full border-3 border-gray-200 border-t-teal-600"></div>
+          <p class="text-sm text-gray-600">Loading services...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Button Loader Demo -->
+    <section class="space-y-4 rounded-lg border border-gray-200 bg-white p-6">
+      <h2 class="text-xl font-semibold text-gray-900">3. Button Loading States</h2>
+      <p class="text-sm text-gray-600">Buttons with loading spinners</p>
+      <div class="flex gap-4">
+        <button class="flex items-center gap-2 rounded-md bg-teal-600 px-4 py-2 text-white opacity-90">
+          <div class="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white"></div>
+          <span>Booking...</span>
+        </button>
+        <button class="flex items-center gap-2 rounded-md bg-orange-600 px-4 py-2 text-white opacity-90">
+          <div class="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white"></div>
+          <span>Submitting...</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Skeleton Cards Demo -->
+    <section class="space-y-4 rounded-lg border border-gray-200 bg-white p-6">
+      <h2 class="text-xl font-semibold text-gray-900">4. Skeleton Cards</h2>
+      <p class="text-sm text-gray-600">Loading state for service cards</p>
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Default skeleton card -->
+        <div class="animate-pulse rounded-lg border border-gray-200 bg-white p-6">
+          <div class="space-y-4">
+            <div class="h-12 w-12 rounded-lg bg-gray-200"></div>
+            <div class="h-5 w-3/4 rounded bg-gray-200"></div>
+            <div class="space-y-2">
+              <div class="h-3 w-full rounded bg-gray-200"></div>
+              <div class="h-3 w-5/6 rounded bg-gray-200"></div>
+            </div>
+            <div class="h-10 w-full rounded-md bg-gray-200"></div>
+          </div>
+        </div>
+
+        <!-- Procedure variant -->
+        <div class="animate-pulse rounded-lg border border-gray-200 bg-white p-6">
+          <div class="flex items-start gap-4">
+            <div class="h-10 w-10 rounded-lg bg-gray-200"></div>
+            <div class="flex-1 space-y-3">
+              <div class="h-4 w-3/4 rounded bg-gray-200"></div>
+              <div class="h-3 w-full rounded bg-gray-200"></div>
+              <div class="h-3 w-2/3 rounded bg-gray-200"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vertical variant -->
+        <div class="animate-pulse rounded-lg border border-gray-200 bg-white p-6">
+          <div class="space-y-4">
+            <div class="h-10 w-10 rounded-lg bg-gray-200"></div>
+            <div class="space-y-2">
+              <div class="h-5 w-3/4 rounded bg-gray-200"></div>
+              <div class="h-3 w-full rounded bg-gray-200"></div>
+              <div class="h-3 w-5/6 rounded bg-gray-200"></div>
+            </div>
+            <div class="h-9 w-full rounded-md bg-gray-200"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Loading Dots Demo -->
+    <section class="space-y-4 rounded-lg border border-gray-200 bg-white p-6">
+      <h2 class="text-xl font-semibold text-gray-900">5. Loading Dots Animation</h2>
+      <p class="text-sm text-gray-600">Subtle loading indicator</p>
+      <div class="flex items-center gap-2">
+        <span class="text-gray-700">Loading</span>
+        <div class="flex gap-1">
+          <span class="h-1.5 w-1.5 animate-bounce rounded-full bg-teal-600 [animation-delay:-0.3s]"></span>
+          <span class="h-1.5 w-1.5 animate-bounce rounded-full bg-teal-600 [animation-delay:-0.15s]"></span>
+          <span class="h-1.5 w-1.5 animate-bounce rounded-full bg-teal-600"></span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Full page loader overlay (hidden by default) -->
+  <div id="pageLoaderOverlay" class="fixed inset-0 z-50 hidden items-center justify-center bg-white">
+    <div class="flex flex-col items-center gap-6">
+      <div class="relative">
+        <div class="h-16 w-16 animate-spin rounded-full border-4 border-gray-100 border-t-teal-600"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="h-8 w-8 animate-pulse rounded-full bg-orange-500/20"></div>
+        </div>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <p class="text-lg font-semibold text-gray-900">Loading</p>
+        <div class="flex gap-1">
+          <span class="h-1.5 w-1.5 animate-bounce rounded-full bg-teal-600 [animation-delay:-0.3s]"></span>
+          <span class="h-1.5 w-1.5 animate-bounce rounded-full bg-teal-600 [animation-delay:-0.15s]"></span>
+          <span class="h-1.5 w-1.5 animate-bounce rounded-full bg-teal-600"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showPageLoader() {
+      const overlay = document.getElementById('pageLoaderOverlay');
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+
+      // Auto-hide after 2 seconds for demo
+      setTimeout(() => {
+        overlay.classList.add('hidden');
+        overlay.classList.remove('flex');
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

@@ -4,12 +4,15 @@
  * Route paths match docs/PERSON_A_SITEMAP.md (canonical sitemap).
  */
 
-export const SITE_NAME = "Apollo Homecare";
-export const PHONE_NUMBER = "1800 108 8586";
-export const PHONE_HREF = "tel:18001088586";
-export const WHATSAPP_NUMBER = "+91 7075448283";
-export const WHATSAPP_HREF = "https://api.whatsapp.com/send/?phone=917075448283&text=Hi";
-export const CONTACT_EMAIL = "care@apollohomecare.com";
+export const SITE_NAME = "Svasth Homecare";
+// [PLACEHOLDER] Helpline + WhatsApp are stand-ins (all zeros) — replace with
+// Svasth's real numbers before launch. The previous values were a real
+// third-party helpline and must not be reused.
+export const PHONE_NUMBER = "1800 000 0000";
+export const PHONE_HREF = "tel:18000000000";
+export const WHATSAPP_NUMBER = "+91 00000 00000";
+export const WHATSAPP_HREF = "https://api.whatsapp.com/send/?phone=910000000000&text=Hi";
+export const CONTACT_EMAIL = "care@svasthhomecare.com";
 
 export const SUPPORTED_CITIES = [
   "Hyderabad",
@@ -25,7 +28,7 @@ export const SUPPORTED_CITIES = [
   "Guwahati",
 ];
 
-const PROCEDURE_SLUGS = [
+export const PROCEDURE_SLUGS = [
   "ryles-tube-insertion",
   "foley-catheter-care",
   "iv-infusion-at-home",

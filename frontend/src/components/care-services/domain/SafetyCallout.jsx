@@ -1,20 +1,25 @@
 /**
- * SafetyCallout — Why-Choose-Us trust card.
- * Portea card treatment: white, 12px radius, border rgba(0,151,158,.14),
- * shadow 0 3px 12px rgba(13,34,34,.05), teal icon media box
- * rgba(0,151,158,.08), hover translateY(-2px) + teal shadow.
+ * SafetyCallout — a trust column.
+ *
+ * Deliberately not a card. The service cards carry a surface, a shadow and a
+ * hover lift because they are links; boxing the trust items the same way would
+ * give the page two card treatments competing for the same attention and imply
+ * these are clickable. They are columns held together by the arch plate and the
+ * grid's own alignment, which keeps them quiet.
  */
 
 const SafetyCallout = ({ icon: Icon, title, description, className = "" }) => {
   return (
-    <div
-      className={`flex h-full flex-col items-center rounded-[12px] border border-[rgba(0,151,158,0.14)] bg-white p-6 text-center shadow-[0_3px_12px_rgba(13,34,34,0.05)] transition-all duration-150 ease-in-out hover:-translate-y-[2px] hover:border-[rgba(0,151,158,0.4)] hover:shadow-[0_8px_20px_rgba(0,151,158,0.1)] ${className}`}
-    >
-      <span className="mb-3 inline-flex rounded-xl bg-[rgba(0,151,158,0.08)] p-3 text-primary">
-        <Icon size={24} strokeWidth={2} aria-hidden="true" />
+    <div className={`h-full ${className}`}>
+      <span className="care-plate">
+        <Icon size={20} strokeWidth={1.75} aria-hidden="true" />
       </span>
-      <h3 className="text-base font-semibold text-neutral-900 sm:text-lg">{title}</h3>
-      <p className="mt-1 text-base leading-relaxed text-neutral-600">{description}</p>
+
+      <h3 className="care-h3 mt-5 font-display">{title}</h3>
+
+      <p className="mt-2.5 text-[15px] leading-[1.7] text-[var(--care-mute)]">
+        {description}
+      </p>
     </div>
   );
 };

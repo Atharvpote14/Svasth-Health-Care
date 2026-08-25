@@ -48,7 +48,7 @@ const CareNeedsSection = ({
                     <li key={`${group.label}-${item.label}`}>
                       <Link
                         href={item.href}
-                        className="flex items-center justify-center gap-[10px] rounded-[20px] bg-neutral-100 px-5 py-[10px] text-sm font-medium text-neutral-900 transition-colors duration-200 hover:bg-secondary hover:text-white"
+                        className="flex items-center justify-center gap-[10px] rounded-[20px] care-band px-5 py-[10px] text-sm font-medium text-neutral-900 transition-colors duration-200 hover:bg-secondary hover:text-white"
                       >
                         {item.label}
                       </Link>

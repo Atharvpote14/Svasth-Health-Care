@@ -22,23 +22,23 @@ import { getFaqPage, getHomePage } from "../lib/data";
 import { NAV_LINKS, serviceHref } from "../lib/site";
 
 export const metadata = {
-  title: "Apollo Homecare | #1 Home Care Services in India",
+  title: "Svasth Homecare | #1 Home Care Services in India",
   description:
-    "Expert healthcare delivered to your doorstep — long term care, home visits, and nursing procedures by trained, verified professionals. Call 1800 108 8586.",
+    "Expert healthcare delivered to your doorstep — long term care, home visits, and nursing procedures by trained, verified professionals. Call 1800 000 0000.",
 };
 
-/* How-it-works steps — real Apollo flow (sourced from live service pages).
+/* How-it-works steps — real Svasth flow (sourced from live service pages).
    [CONFIRM WITH CLIENT] — confirm exact step naming before launch. */
 const HOW_IT_WORKS_STEPS = [
   {
     title: "Book or call us",
     description:
-      "Choose a service on this page or call 1800 108 8586 to share the patient's needs.",
+      "Choose a service on this page or call 1800 000 0000 to share the patient's needs.",
   },
   {
     title: "Clinical assessment",
     description:
-      "Apollo's team evaluates the patient's condition and recommends the right care plan.",
+      "Svasth's team evaluates the patient's condition and recommends the right care plan.",
   },
   {
     title: "Care begins at home",
@@ -52,7 +52,7 @@ const HOW_IT_WORKS_STEPS = [
   },
 ];
 
-/* Why-choose-us grid — unified lucide line icons only, Apollo palette */
+/* Why-choose-us grid — unified lucide line icons only, Svasth palette */
 const SAFETY_ITEMS = [
   {
     icon: BadgeCheck,
@@ -87,30 +87,40 @@ const HERO_TRUST_ITEMS = [
   { icon: HeartHandshake, label: "Compassionate, reliable support" },
 ];
 
-/* Vertical cards for Diagnostics / Vaccination / Equipment (Person B routes).
-   Minimal copy — full content lives on those pages. */
-const VERTICAL_CARDS = {
-  diagnostics: {
+/* The other three service lines (Person B's routes). One section with three
+   cards, not three sections with one card each: a full-width band, heading and
+   "see all" link wrapped around a single tile read as a page that had run out
+   of content, and three of them in a row read as a fault. */
+const SERVICE_LINES = [
+  {
     icon: Microscope,
     title: "Home Diagnostics",
     tagline: "Diagnostic tests and sample collection at home.",
     href: "/home-diagnostics/",
   },
-  vaccination: {
+  {
     icon: Syringe,
     title: "Adult Vaccination",
     tagline: "Vaccination services delivered at home.",
     href: "/adult-vaccination/",
   },
-  equipment: {
+  {
     icon: MonitorCheck,
     title: "Medical Equipment",
     tagline: "Medical equipment for home-based care.",
     href: "/medical-equipment/",
   },
-};
+];
 
-/* FAQs picked to cover the common questions (real Apollo answers) */
+/* Offers, testimonials, clinical leadership, partner logos and press logos are
+   all still waiting on the client, and every one of them renders its own
+   placeholder text — "[PENDING REAL TESTIMONIAL]", "[Doctor name]", "[Logo]".
+   Five such bands were shipping on the home page, which is worse for a reader
+   than their absence. The components and their copy stay in the repo; flip this
+   to true once real content lands and they come back in the same order. */
+const SHOW_PLACEHOLDER_SECTIONS = false;
+
+/* FAQs picked to cover the common questions (real Svasth answers) */
 const HOME_FAQ_IDS = [
   "faq-booking-1",
   "faq-trust-1",
@@ -164,7 +174,7 @@ export default async function HomePage() {
     <>
       {/* 1. HERO — service selector + Book Now + phone (replaces 13-button wall) */}
       <HeroSection
-        title="Apollo Homecare Services"
+        title="Svasth Homecare Services"
         tagline="Hospital-grade care at your doorstep — long term care, home visits, nursing procedures, and diagnostics delivered by trained, verified professionals."
         selectorGroups={selectorGroups}
         trustItems={HERO_TRUST_ITEMS}
@@ -173,10 +183,11 @@ export default async function HomePage() {
       {/* 2. STATS BAR — directly under hero (1Mn+, QAI, 2K+, 4.9) */}
       <StatsStrip />
 
-      {/* 3. SERVICES OVERVIEW — 5 verticals, simplified icon + title + Book Now cards.
-          Rhythm mirrors portea.com: ivory/white alternation on the service grids. */}
+      {/* 3. SERVICES — the three care-services grids, then the other lines.
+          Grounds alternate white / off-white so consecutive grids stay legible
+          as separate sections without needing a divider. */}
       <ServiceGridSection
-        tone="off-white"
+        tone="white"
         eyebrow="Long Term Care"
         title="Compassionate Care You Can Trust at Home"
         lead="Expert care for your loved ones, combining medical excellence with the comfort of home."
@@ -185,7 +196,7 @@ export default async function HomePage() {
       />
 
       <ServiceGridSection
-        tone="white"
+        tone="off-white"
         eyebrow="Home Visit"
         title="Professional Healthcare at Your Doorstep"
         lead="Easily book doctors, physiotherapists, and post-surgical support at home."
@@ -194,88 +205,71 @@ export default async function HomePage() {
       />
 
       <ServiceGridSection
-        tone="off-white"
+        tone="white"
         eyebrow="Home Visit · Nursing Procedures"
         title="Nurse Procedures at Home"
         lead="Services like wound care and urinary catheterisation, delivered safely in the comfort of your home."
         items={data.homeVisitProcedures}
         variant="procedure"
-        columns={2}
+        columns={4}
         seeAllHref="/home-visit/"
-      />
-
-      {/* Diagnostics / Vaccination / Equipment — same card treatment */}
-      <ServiceGridSection
-        tone="white"
-        eyebrow="Home Diagnostics"
-        title="Tests at Home"
-        items={[VERTICAL_CARDS.diagnostics]}
-        variant="vertical"
-        seeAllHref="/home-diagnostics/"
       />
 
       <ServiceGridSection
         tone="off-white"
-        eyebrow="Adult Vaccination"
-        title="Stay Protected"
-        items={[VERTICAL_CARDS.vaccination]}
+        eyebrow="Also at home"
+        title="Diagnostics, vaccination, and equipment"
+        lead="The same care team can arrange tests, vaccinations, and the equipment a care plan needs."
+        items={SERVICE_LINES}
         variant="vertical"
-        seeAllHref="/adult-vaccination/"
-      />
-
-      <ServiceGridSection
-        tone="white"
-        eyebrow="Medical Equipment"
-        title="Care Essentials Delivered"
-        items={[VERTICAL_CARDS.equipment]}
-        variant="vertical"
-        seeAllHref="/medical-equipment/"
+        columns={3}
       />
 
       {/* 4. HOW IT WORKS — 4-step booking-to-care flow */}
       <HowItWorksSection
         title="How care at home works"
-        lead="From first call to ongoing follow-up, the Apollo care journey in four steps."
+        lead="From first call to ongoing follow-up, the Svasth care journey in four steps."
         steps={HOW_IT_WORKS_STEPS}
       />
 
-      {/* 5. OFFERS — placeholder cards [PENDING OFFER DATA] */}
-      <OffersSection />
+      {/* 5–7 + 10–11. Offers, testimonials, clinical leadership, partner logos,
+          press logos — all awaiting client content. See
+          SHOW_PLACEHOLDER_SECTIONS above. */}
+      {SHOW_PLACEHOLDER_SECTIONS && (
+        <>
+          <OffersSection />
+          <TestimonialsSection />
+          <ClinicalLeadershipSection />
 
-      {/* 6. TESTIMONIALS — placeholder carousel [PENDING REAL TESTIMONIALS] */}
-      <TestimonialsSection />
+          <LogosStripSection
+            eyebrow="Partners"
+            title="Trusted by leading hospitals"
+            lead="Svasth Homecare works alongside leading hospitals and healthcare partners."
+            note="[CONFIRM LOGOS / PERMISSION WITH CLIENT] — no logos shown until approved."
+          />
 
-      {/* 7. CLINICAL LEADERSHIP — placeholder cards [PENDING FROM CLIENT] */}
-      <ClinicalLeadershipSection />
+          <LogosStripSection
+            tone="off-white"
+            eyebrow="In the news"
+            title="As seen in the press"
+            lead="Press mentions and media coverage of Svasth Homecare."
+            note="[CONFIRM PRESS MENTIONS WITH CLIENT] — placeholder chips, real logos/media to be supplied."
+          />
+        </>
+      )}
 
-      {/* 8. WHY CHOOSE US — simplified icon grid */}
+      {/* 8. WHY CHOOSE US */}
       <SafetySection
         eyebrow="Why choose us"
         title="Hospital-grade care, brought home"
-        lead="Apollo Homecare brings hospital-grade care to your doorstep with professionally trained, background-verified caregivers you can trust."
+        lead="Svasth Homecare brings hospital-grade care to your doorstep with professionally trained, background-verified caregivers you can trust."
         items={SAFETY_ITEMS}
+        tone="white"
       />
 
       {/* 9. CASE STUDIES — skipped for v1 (no real content yet) */}
 
-      {/* 10. PARTNER HOSPITALS — placeholder logo strip [CONFIRM LOGOS] */}
-      <LogosStripSection
-        eyebrow="Partners"
-        title="Trusted by leading hospitals"
-        lead="Apollo Homecare works alongside leading hospitals and healthcare partners."
-        note="[CONFIRM LOGOS / PERMISSION WITH CLIENT] — no logos shown until approved."
-      />
-
-      {/* 11. PRESS / MEDIA — placeholder press logo strip (ivory band, like portea.com) */}
-      <LogosStripSection
-        tone="off-white"
-        eyebrow="In the news"
-        title="As seen in the press"
-        lead="Press mentions and media coverage of Apollo Homecare."
-        note="[CONFIRM PRESS MENTIONS WITH CLIENT] — placeholder chips, real logos/media to be supplied."
-      />
-
-      {/* 12. CITY COVERAGE — state → city accordion (footer links retained for SEO) */}
+      {/* 12. CITY COVERAGE — ruled register (footer links retained for SEO) */}
       <CityCoverageSection />
 
       {/* 13. FAQ — before the final CTA */}
@@ -286,11 +280,13 @@ export default async function HomePage() {
         seeAllHref="/faq/"
       />
 
-      {/* 14. FINAL CTA BANNER — "Ready to bring care home?" */}
+      {/* 14. FINAL CTA BANNER. The button reads "Explore home visits", not
+          "Book Now": it opens the hub, and nothing is booked by pressing it.
+          Anyone ready to book now has the phone number beside it. */}
       <FinalCTASection
         title="Ready to bring care home?"
-        lead="Hospital-grade care delivered by trusted professionals — book now or talk to our care team."
-        cta={{ label: "Book Now", href: "/home-visit/" }}
+        lead="Hospital-grade care delivered by trusted professionals — browse the services or talk to our care team."
+        cta={{ label: "Explore home visits", href: "/home-visit/" }}
         note="In a medical emergency, our team provides quick response support."
       />
 

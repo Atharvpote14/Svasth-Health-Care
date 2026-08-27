@@ -76,14 +76,34 @@ export const FOOTER_COLUMNS = [
       { label: "Pricing & Plans", path: "/pricing/" },
     ],
   },
+
   {
     title: "About",
     links: [
+      { label: "About Us", path: "/about/" },
       { label: "Patient Charter", path: "/about/patient-charter/" },
+      { label: "Careers", path: "/careers/" },
+      { label: "Partner With Us", path: "/partner/" },
+      { label: "News & Media", path: "/news-media/" },
       { label: "Testimonials", path: "/testimonials/" },
       { label: "Insurance & TPA Tie-ups", path: "/insurance-tpa-tieups/" },
     ],
   },
-];
 
-export const FOOTER_COPYRIGHT = `© ${new Date().getFullYear()} ${SITE_NAME}. All rights reserved.`;
+  {
+    title: "Locations",
+    links: [
+      { label: "Pune", path: "/locations/pune/" },
+      { label: "Mumbai", path: "/locations/mumbai/" },
+      { label: "Delhi", path: "/locations/delhi/" },
+      { label: "Bangalore", path: "/locations/bangalore/" },
+      { label: "Hyderabad", path: "/locations/hyderabad/" },
+      { label: "Kolkata", path: "/locations/kolkata/" },
+      { label: "Chennai", path: "/locations/chennai/" },
+      { label: "Madurai", path: "/locations/madurai/" },
+      { label: "Mysore", path: "/locations/mysore/" },
+      { label: "Indore", path: "/locations/indore/" },
+      { label: "Guwahati", path: "/locations/guwahati/" },
+    ],
+  },
+];

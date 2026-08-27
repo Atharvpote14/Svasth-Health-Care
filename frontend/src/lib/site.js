@@ -107,3 +107,4 @@ export const FOOTER_COLUMNS = [
     ],
   },
 ];
+export const FOOTER_COPYRIGHT = "© " + new Date().getFullYear() + " Svasth Homecare. All rights reserved.";

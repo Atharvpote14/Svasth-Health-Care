@@ -8,7 +8,7 @@ import {
 import {
     PersonCPage,
     PAGE_BY_SLUG as PERSON_C_PAGES,
-} from "./corporate-local-seo/shared";
+} from "../components/corporate-local-seo/shared";
 
 export default function WebsiteRouter() {
     const router = useRouter();

@@ -31,15 +31,16 @@ import {
     ChevronRight,
 } from "lucide-react";
 
-import CategoryHero from "../../components/care-services/sections/CategoryHero";
-import FAQSection from "../../components/care-services/sections/FAQSection";
-import FinalCTASection from "../../components/care-services/sections/FinalCTASection";
-import Breadcrumbs from "../../components/care-services/utilities/Breadcrumbs";
-import Footer from "../../components/footer";
+import CategoryHero from "../care-services/sections/CategoryHero";
+import FAQSection from "../care-services/sections/FAQSection";
+import FinalCTASection from "../care-services/sections/FinalCTASection";
+import Breadcrumbs from "../care-services/utilities/Breadcrumbs";
+import Footer from "../footer";
 
 import {
     FOOTER_COLUMNS,
     FOOTER_COPYRIGHT,
+    NAV_LINKS,
     PHONE_HREF,
     PHONE_NUMBER,
     SITE_NAME,
@@ -132,7 +133,35 @@ const CITY_LIST = [
             "Convenient home-based healthcare support for families in Guwahati.",
     },
 ];
+function SiteHeader() {
+    return (
+        <header className="header care-header">
+            <div className="header-container">
+                <Link
+                    href="/"
+                    className="header-logo care-wordmark font-display text-xl text-neutral-900"
+                >
+                    {SITE_NAME}
+                </Link>
 
+                <nav className="navbar flex items-center" aria-label="Primary">
+                    <ul className="navbar-list flex">
+                        {NAV_LINKS.map((item) => (
+                            <li
+                                className="navbar-item"
+                                key={item.path || item.label}
+                            >
+                                <Link href={item.path}>
+                                    {item.label}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    );
+}
 /* ============================================================================
    PAGE SHELL
 ============================================================================ */
@@ -146,6 +175,8 @@ export function PageShell({ breadcrumbs = [], children }) {
             >
                 Skip to main content
             </a>
+
+            <SiteHeader />
 
             <main id="main-content">
                 {breadcrumbs.length > 0 && (

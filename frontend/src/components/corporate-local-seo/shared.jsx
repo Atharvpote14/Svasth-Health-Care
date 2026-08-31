@@ -136,19 +136,22 @@ const CITY_LIST = [
 function SiteHeader() {
     return (
         <header className="header care-header">
-            <div className="header-container">
+            <div className="header-container w-full">
                 <Link
                     href="/"
-                    className="header-logo care-wordmark font-display text-xl text-neutral-900"
+                    className="header-logo care-wordmark shrink-0 font-display text-xl text-neutral-900"
                 >
                     {SITE_NAME}
                 </Link>
 
-                <nav className="navbar flex items-center" aria-label="Primary">
-                    <ul className="navbar-list flex">
+                <nav
+                    className="navbar ml-4 min-w-0 flex-1 overflow-x-auto"
+                    aria-label="Primary"
+                >
+                    <ul className="navbar-list flex w-max whitespace-nowrap">
                         {NAV_LINKS.map((item) => (
                             <li
-                                className="navbar-item"
+                                className="navbar-item shrink-0"
                                 key={item.path || item.label}
                             >
                                 <Link href={item.path}>
@@ -165,10 +168,9 @@ function SiteHeader() {
 /* ============================================================================
    PAGE SHELL
 ============================================================================ */
-
 export function PageShell({ breadcrumbs = [], children }) {
     return (
-        <div className="care-theme min-h-screen bg-white text-[var(--care-ink)]">
+        <div className="care-theme w-full min-h-screen bg-white text-[var(--care-ink)] overflow-x-hidden">
             <a
                 href="#main-content"
                 className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-white"
@@ -180,7 +182,7 @@ export function PageShell({ breadcrumbs = [], children }) {
 
             <main id="main-content">
                 {breadcrumbs.length > 0 && (
-                    <div className="mx-auto max-w-6xl px-6 pb-2 pt-8">
+                    <div className="mx-auto w-full max-w-6xl px-4 pb-2 pt-6 sm:px-6 sm:pt-8">
                         <Breadcrumbs items={breadcrumbs} />
                     </div>
                 )}
@@ -195,10 +197,10 @@ export function PageShell({ breadcrumbs = [], children }) {
         </div>
     );
 }
+
 /* ============================================================================
    REUSABLE COMPONENTS
 ============================================================================ */
-
 export function Section({
     id,
     eyebrow,
@@ -212,9 +214,10 @@ export function Section({
     return (
         <section
             id={id}
-            className={`${background} py-14 md:py-20 ${id ? "scroll-mt-24" : ""}`}
+            className={`${background} py-14 md:py-20 ${id ? "scroll-mt-24" : ""
+                }`}
         >
-            <div className="mx-auto max-w-6xl px-6">
+            <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
                 {(eyebrow || title || lead) && (
                     <div className="mb-10 max-w-3xl">
                         {eyebrow && (
@@ -257,14 +260,13 @@ export function CardGrid({ cols = 3, children }) {
         </div>
     );
 }
-
 export function InfoCard({
     icon: Icon = ShieldCheck,
     title,
     description,
 }) {
     return (
-        <article className="care-card p-6">
+        <article className="care-card min-w-0 p-5 sm:p-6">
             <div className="care-plate">
                 <Icon size={21} strokeWidth={1.8} />
             </div>
@@ -288,7 +290,7 @@ export function LinkCard({
     cta = "Learn more",
 }) {
     return (
-        <article className="care-card group relative flex min-h-[220px] flex-col p-6">
+        <article className="care-card group relative flex min-h-[220px] min-w-0 flex-col p-5 sm:p-6">
             <div className="care-plate">
                 <Icon size={21} strokeWidth={1.8} />
             </div>
@@ -1657,3 +1659,4 @@ export function PersonCNotFound() {
         </PageShell>
     );
 }
+

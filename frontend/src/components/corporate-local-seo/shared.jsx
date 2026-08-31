@@ -1,11 +1,30 @@
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useRouter } from "next/router";
 import {
+    useCallback,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+} from "react";
+import { createPortal } from "react-dom";
+
+import {
+    Fraunces,
+    IBM_Plex_Mono,
+    IBM_Plex_Sans,
+} from "next/font/google";
+
+import {
+    Accessibility,
     ArrowRight,
+    Award,
     BadgeCheck,
+    BriefcaseBusiness,
     Building2,
     CalendarDays,
     CheckCircle2,
+    ChevronRight,
     ClipboardCheck,
     Clock3,
     FileText,
@@ -17,18 +36,16 @@ import {
     Landmark,
     MapPin,
     Megaphone,
+    Menu,
     Microscope,
+    Newspaper,
     Phone,
     Search,
     ShieldCheck,
     Stethoscope,
-    Users,
     UserRound,
-    BriefcaseBusiness,
-    Newspaper,
-    Award,
-    Accessibility,
-    ChevronRight,
+    Users,
+    X,
 } from "lucide-react";
 
 import CategoryHero from "../care-services/sections/CategoryHero";
@@ -49,7 +66,28 @@ import {
 /* ============================================================================
    CONSTANTS
 ============================================================================ */
+const fraunces = Fraunces({
+    subsets: ["latin"],
+    style: ["normal", "italic"],
+    display: "swap",
+    variable: "--font-fraunces",
+});
 
+const plexSans = IBM_Plex_Sans({
+    subsets: ["latin"],
+    weight: ["400", "500", "600"],
+    display: "swap",
+    variable: "--font-plex-sans",
+});
+
+const plexMono = IBM_Plex_Mono({
+    subsets: ["latin"],
+    weight: ["400", "500"],
+    display: "swap",
+    variable: "--font-plex-mono",
+});
+
+const FONT_VARS = `${fraunces.variable} ${plexSans.variable} ${plexMono.variable}`;
 const HERO_TRUST = [
     {
         icon: BadgeCheck,
@@ -133,36 +171,319 @@ const CITY_LIST = [
             "Convenient home-based healthcare support for families in Guwahati.",
     },
 ];
+const normPath = (p) =>
+    p && p !== "/" && p.endsWith("/") ? p.slice(0, -1) : p;
+
+const isActive = (pathname, href) =>
+    normPath(pathname || "/") === normPath(href);
+
 function SiteHeader() {
     return (
         <header className="header care-header">
-            <div className="header-container w-full">
+            <div className="header-container">
                 <Link
                     href="/"
-                    className="header-logo care-wordmark shrink-0 font-display text-xl text-neutral-900"
+                    className="header-logo care-wordmark font-display text-xl text-neutral-900"
                 >
                     {SITE_NAME}
                 </Link>
 
-                <nav
-                    className="navbar ml-4 min-w-0 flex-1 overflow-x-auto"
-                    aria-label="Primary"
-                >
-                    <ul className="navbar-list flex w-max whitespace-nowrap">
-                        {NAV_LINKS.map((item) => (
-                            <li
-                                className="navbar-item shrink-0"
-                                key={item.path || item.label}
-                            >
-                                <Link href={item.path}>
-                                    {item.label}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
+                <PagesNav items={NAV_LINKS} />
             </div>
         </header>
+    );
+}
+function PagesNav({ items = [] }) {
+    const router = useRouter();
+
+    const pathname = (
+        router.asPath ||
+        router.pathname ||
+        "/"
+    ).split(/[?#]/)[0];
+
+    const [open, setOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
+    const triggerRef = useRef(null);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    useEffect(() => {
+        setOpen(false);
+    }, [pathname]);
+
+    useEffect(() => {
+        if (!open) return;
+
+        const onResize = () => {
+            if (window.innerWidth >= 1024) {
+                setOpen(false);
+            }
+        };
+
+        window.addEventListener("resize", onResize);
+
+        return () => {
+            window.removeEventListener("resize", onResize);
+        };
+    }, [open]);
+
+    const close = useCallback(() => {
+        setOpen(false);
+        triggerRef.current?.focus();
+    }, []);
+
+    return (
+        <nav
+            className="navbar flex items-center"
+            aria-label="Primary"
+        >
+            {/* DESKTOP */}
+            <ul className="navbar-list hidden lg:flex">
+                {items.map((item) => (
+                    <li
+                        className="navbar-item"
+                        key={item.path || item.label}
+                    >
+                        <Link
+                            href={item.path}
+                            aria-current={
+                                isActive(pathname, item.path)
+                                    ? "page"
+                                    : undefined
+                            }
+                        >
+                            {item.label}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+
+            {/* MOBILE MENU BUTTON */}
+            <button
+                ref={triggerRef}
+                type="button"
+                onClick={() => setOpen(true)}
+                aria-label="Open menu"
+                aria-haspopup="dialog"
+                aria-expanded={open}
+                aria-controls="mobile-nav-panel"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-[10px] text-neutral-700 transition-colors duration-250 ease-standard hover:bg-black/5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:hidden"
+            >
+                <Menu
+                    size={24}
+                    strokeWidth={1.75}
+                    aria-hidden="true"
+                />
+            </button>
+
+            {mounted &&
+                open &&
+                createPortal(
+                    <MobileDrawer
+                        items={items}
+                        pathname={pathname}
+                        onClose={close}
+                    />,
+                    document.body
+                )}
+        </nav>
+    );
+}
+function MobileDrawer({ items, pathname, onClose }) {
+    const panelRef = useRef(null);
+    const closeBtnRef = useRef(null);
+    const [shown, setShown] = useState(false);
+
+    useEffect(() => {
+        const id = requestAnimationFrame(() => {
+            setShown(true);
+        });
+
+        return () => cancelAnimationFrame(id);
+    }, []);
+
+    // STOP THE PAGE BEHIND THE MENU FROM SCROLLING
+    useEffect(() => {
+        const previous = document.body.style.overflow;
+
+        document.body.style.overflow = "hidden";
+
+        return () => {
+            document.body.style.overflow = previous;
+        };
+    }, []);
+
+    useEffect(() => {
+        closeBtnRef.current?.focus();
+    }, []);
+
+    const onKeyDown = (event) => {
+        if (event.key === "Escape") {
+            event.stopPropagation();
+            onClose();
+            return;
+        }
+
+        if (event.key !== "Tab") return;
+
+        const focusables =
+            panelRef.current?.querySelectorAll(
+                'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            );
+
+        if (!focusables || focusables.length === 0) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (
+            event.shiftKey &&
+            document.activeElement === first
+        ) {
+            event.preventDefault();
+            last.focus();
+        } else if (
+            !event.shiftKey &&
+            document.activeElement === last
+        ) {
+            event.preventDefault();
+            first.focus();
+        }
+    };
+
+    return (
+        <div
+            id="mobile-nav-panel"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site menu"
+            className={`${FONT_VARS} care-theme fixed inset-0 z-[60] lg:hidden`}
+            onKeyDown={onKeyDown}
+        >
+
+            {/* DARK BACKGROUND */}
+            <div
+                aria-hidden="true"
+                onClick={onClose}
+                className={`absolute inset-0 bg-[#06282a]/45 transition-opacity duration-250 ${shown ? "opacity-100" : "opacity-0"
+                    }`}
+            />
+
+            {/* RIGHT SIDE MENU */}
+            <div
+                ref={panelRef}
+                className={`absolute inset-y-0 right-0 flex h-full w-[min(20rem,86vw)] flex-col bg-[#faf8f3] shadow-2xl transition-transform duration-250 ${shown
+                    ? "translate-x-0"
+                    : "translate-x-full"
+                    }`}
+            >
+
+                {/* MENU HEADER */}
+                <div className="flex h-16 items-center justify-between border-b border-black/5 pl-5 pr-3">
+                    <span className="font-display text-lg text-neutral-900">
+                        {SITE_NAME}
+                    </span>
+
+                    <button
+                        ref={closeBtnRef}
+                        type="button"
+                        onClick={onClose}
+                        aria-label="Close menu"
+                        className="inline-flex h-11 w-11 items-center justify-center rounded-[10px] text-neutral-600 hover:bg-black/5 hover:text-primary"
+                    >
+                        <X
+                            size={22}
+                            strokeWidth={1.75}
+                            aria-hidden="true"
+                        />
+                    </button>
+                </div>
+
+                {/* MENU OPTIONS */}
+                <nav
+                    aria-label="Site"
+                    className="flex-1 px-3 py-4 overflow-hidden"
+                >
+                    <ul className="flex flex-col gap-1">
+
+                        {items.map((item) => {
+                            const active = isActive(
+                                pathname,
+                                item.path
+                            );
+
+                            return (
+                                <li
+                                    key={item.path || item.label}
+                                >
+                                    <Link
+                                        href={item.path}
+                                        onClick={onClose}
+                                        aria-current={
+                                            active
+                                                ? "page"
+                                                : undefined
+                                        }
+                                        className={`flex items-center justify-between rounded-xl px-4 py-4 text-[16px] font-medium transition-colors ${active
+                                            ? "bg-primary/10 text-primary"
+                                            : "text-neutral-800 hover:bg-black/5"
+                                            }`}
+                                    >
+                                        <span>{item.label}</span>
+
+                                        <ArrowRight
+                                            size={18}
+                                            strokeWidth={2}
+                                            aria-hidden="true"
+                                            className={
+                                                active
+                                                    ? "text-primary"
+                                                    : "text-neutral-400"
+                                            }
+                                        />
+                                    </Link>
+                                </li>
+                            );
+                        })}
+
+                    </ul>
+                </nav>
+
+                {/* CALL BUTTON */}
+                <div className="border-t border-black/5 px-5 py-5">
+
+                    <a
+                        href={PHONE_HREF}
+                        onClick={onClose}
+                        className="btn btn-primary h-12 w-full"
+                    >
+                        <Phone
+                            size={17}
+                            strokeWidth={2}
+                            aria-hidden="true"
+                        />
+
+                        Call care team
+                    </a>
+
+                    <p className="mt-3 text-center text-sm text-neutral-500">
+                        or dial{" "}
+
+                        <a
+                            href={PHONE_HREF}
+                            className="font-semibold text-primary"
+                        >
+                            {PHONE_NUMBER}
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
     );
 }
 /* ============================================================================
@@ -170,10 +491,12 @@ function SiteHeader() {
 ============================================================================ */
 export function PageShell({ breadcrumbs = [], children }) {
     return (
-        <div className="care-theme w-full min-h-screen bg-white text-[var(--care-ink)] overflow-x-hidden">
+        <div
+            className={`${FONT_VARS} care-theme min-h-screen bg-white text-[var(--care-ink)]`}
+        >
             <a
                 href="#main-content"
-                className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-white"
+                className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50"
             >
                 Skip to main content
             </a>
@@ -182,7 +505,7 @@ export function PageShell({ breadcrumbs = [], children }) {
 
             <main id="main-content">
                 {breadcrumbs.length > 0 && (
-                    <div className="mx-auto w-full max-w-6xl px-4 pb-2 pt-6 sm:px-6 sm:pt-8">
+                    <div className="mx-auto max-w-6xl px-6 pt-8 pb-2">
                         <Breadcrumbs items={breadcrumbs} />
                     </div>
                 )}
@@ -197,7 +520,6 @@ export function PageShell({ breadcrumbs = [], children }) {
         </div>
     );
 }
-
 /* ============================================================================
    REUSABLE COMPONENTS
 ============================================================================ */
